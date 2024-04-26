@@ -15,6 +15,8 @@ Siin repos on lihtsalt põhi conf, et seda oleks lihtsma jagada ja testimise aja
 Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 - ```apt install prometheus```
 - põhiconf asub /etc/prometheus kaustas
+- NOTE: apt installib versiooni ```2.42.0```, prometheusi kodulehel on olemas versioon ```2.51.2```
+Bugide puhul võib proovida uuemat versiooni otse kodukalt
 
 - [prometheus.yml](/etc/prometheus/prometheus.yml)
   - defineerin IP-d mida Prometheus monitoorib
@@ -28,7 +30,8 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
   - Häirete edastamine toimub läbi [Prometheusi Alertmanageri](https://github.com/prometheus/alertmanager)
     - ```sudo apt install prometheus-alertmanager```
     - põhiconf on asukohas /etc/prometheus/alertmanager.yml
-    - todo conf et need läbi alertmanageri discordi edastada
+    - NOTE: apt installib versiooni ```0.25.0```, kodukal on versioon ```0.27.0```
+    - TODO: conf et need läbi alertmanageri discordi edastada
 
 ### klientide agendid
 
@@ -48,15 +51,15 @@ TODO: Testkeskkonnas see toimib, reaalses kkeskkonnas on vaja lubada serverile l
   - ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,cs,logical_disk,service,memory" ADD_FIREWALL_EXCEPTION="yes"```
   - windowsi default endpoint on pordil **9182**, ehk ```http://masina-ip:9182```
 
-- proxmox exporter
+- TODO: proxmox exporter
   - [Prometheus Proxmox VE Exporter](https://github.com/prometheus-pve/prometheus-pve-exporter)
   - vajab testimist
 
-- Mikrotik exporter
+- TODO: Mikrotik exporter
   - [MKTXP](https://github.com/akpw/mktxp)
   - vajab testimist
 
-- switch
+- TODO: switch
   - [ilmselt see töötab? - snmp exporter](https://github.com/prometheus/snmp_exporter)
   - vajab testimist
 
