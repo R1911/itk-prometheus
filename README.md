@@ -42,7 +42,7 @@ Olenevalt lõppseadistusest tuleb ilmselt serveri reeglite confi muuta
   - .msi installeri saab [siit](https://github.com/prometheus-community/windows_exporter/releases)
   - olenevalt sellest, mis "collectoreid" antud seadmel vaja läheb, tuleb installida exporter CMD/powershell käsuga. kõige pealt ```cd kausta/asukoht/kus/.msi/asub``` asukohta kus allalaetud .msi installer asub. 
   Seejärel näiteks:
-  ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,cs,logical_disk,service,memory" ADD_FIREWALL_EXCEPTION="yes"```
+  - ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,cs,logical_disk,service,memory" ADD_FIREWALL_EXCEPTION="yes"```
   - windowsi default endpoint on pordil **9182**, ehk ```http://masina-ip:9182```
 
 - proxmox exporter
