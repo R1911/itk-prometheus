@@ -64,5 +64,5 @@ Olenevalt lõppseadistusest tuleb ilmselt serveri reeglite confi muuta
 ![Grafana](https://grafana.com/static/img/docs/getting-started/simple_grafana_prom_dashboard.png)
 
 - miinuseks on vist see, et free account on limiteeritud, võibolla vaja leida alternatiiv
-![Grafana](https://i.imgur.com/pPvZ1z1.png)
+- ![Grafana](https://i.imgur.com/pPvZ1z1.png)
 
