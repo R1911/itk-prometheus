@@ -34,6 +34,9 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 
 Olenevalt lõppseadistusest tuleb ilmselt serveri reeglite confi muuta
 
+TODO: Testkeskkonnas see toimib, reaalses kkeskkonnas on vaja lubada serverile ligipääs igasse eraldatud võrku (VLAN-id?)
+
+
 - Linuxipõhiste süsteemide peal saab kasutada lihtsalt
 ```sudo apt install prometheus-node-exporter```
   - linuxi default endpoint on pordil **9100**, ehk ```http://masina-ip:9100```
