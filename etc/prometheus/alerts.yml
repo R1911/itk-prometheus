@@ -1,0 +1,11 @@
+groups:
+  - name: Offline
+    rules:
+      - alert: Offline
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: kriitiline
+        annotations:
+          title: "Server {{ $labels.instance }} on offline"
+          description: "Server {{ $labels.instance }} ei ole kättesaadav või on olnud offline viimased 5 minutit."
