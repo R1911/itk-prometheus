@@ -21,6 +21,8 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 
 - [prometheus.yml](/etc/prometheus/prometheus.yml)
   - defineerin IP-d mida Prometheus monitoorib
+  
+  ![Defined machines](https://i.imgur.com/nqF5f5l.png)
 
 - [alerts.yml](/etc/prometheus/alerts.yml)
   - defineerin eraldi häired [alerts.yml](/etc/prometheus/alerts.yml) failis
