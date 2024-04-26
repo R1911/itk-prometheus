@@ -15,9 +15,9 @@ Siin repos on lihtsalt põhi conf, et seda oleks lihtsma jagada ja testimise aja
 Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 - ```apt install prometheus```
 - põhiconf asub /etc/prometheus kaustas
-- NOTE: apt installib versiooni ```2.42.0```, prometheusi kodulehel on olemas versioon ```2.51.2```
+- NOTE: apt installib versiooni ```2.42.0```, prometheusi kodulehel on olemas versioon ```2.51.2```. Bugide puhul võib proovida uuemat versiooni otse kodukalt
 
-Bugide puhul võib proovida uuemat versiooni otse kodukalt
+
 
 - [prometheus.yml](/etc/prometheus/prometheus.yml)
   - defineerin IP-d mida Prometheus monitoorib
