@@ -57,7 +57,8 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 
 Olenevalt lõppseadistusest tuleb ilmselt serveri reeglite confi muuta
 
-TODO: Testkeskkonnas see toimib, reaalses kkeskkonnas on vaja lubada serverile ligipääs igasse eraldatud võrku (VLAN-id?)
+~~TODO: Testkeskkonnas see toimib, reaalses keskkonnas on vaja lubada serverile ligipääs igasse eraldatud võrku.~~
+Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lubada ainult DMZ võrku. 
 
 
 - Linuxipõhiste süsteemide peal saab kasutada lihtsalt
