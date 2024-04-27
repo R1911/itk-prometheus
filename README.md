@@ -34,7 +34,8 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
     - ```sudo apt install prometheus-alertmanager```
     - põhiconf on asukohas [/etc/prometheus/alertmanager.yml](/etc/prometheus/alertmanager.yml)
     - NOTE: apt installib versiooni ```0.25.0```, kodukal on versioon ```0.27.0```
-    - 
+    
+Kuna Alertmanageri saadetud häired on Discordile sõnumiks sobimatus formaadis, tegin javascriptis vaheliidese, mis rekonstrueerib sissetulevad requesti Discordile sobivasse JSON formaati.
 
   - node-i paigaldamine
     - ```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash```
@@ -42,13 +43,13 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
     - ```cd /srv```
     - ```sudo mkdir nodeSrv && sudo chown user:user nodeSrv```
     - ```cd nodeSrv```
-    - ```npm i express reqeust dotenv && npm i -g pm2```
+    - ```npm i express request dotenv && npm i -g pm2```
     - ```nano index.js```
     - [index.js](/srv/nodeSrv/index.js)
     - ```nano .env```
-    - .env faili kirjuta "WEBHOOK_URL=weebhooki url"
-    - scripti taustal run-imiseks```pm2 start index.js```
-    - logide nägemiseks ```pm2 logs 0```
+    - .env faili kirjuta "WEBHOOK_URL=webhooki url discordist"
+    - scripti taustal run-imiseks```pm2 start index.js --name Webhook-vaheliides```
+    - logide nägemiseks ```pm2 logs Webhook-vaheliides```
     - et script käivitus automaatselt startupi ajal ```pm2 startup```, ning see käsklus, mis näidatakse tuleb sisestada
     - `midagi sellist: ```sudo env PATH=$PATH:/home/user/.nvm/versions/node/v20.12.2/bin /home/user/.nvm/versions/node/v20.12.2/lib/node_modules/pm2/bin/pm2 startup systemd -u user --hp /home/user```
     - Seejärel ```pm2 save```
