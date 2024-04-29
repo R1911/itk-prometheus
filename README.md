@@ -18,7 +18,7 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 - NOTE: apt installib versiooni ```2.42.0```, prometheusi kodulehel on olemas versioon ```2.51.2```. Bugide puhul võib proovida uuemat versiooni otse kodukalt
 
 - [prometheus.yml](/etc/prometheus/prometheus.yml)
-  ~~- defineerin IP-d mida Prometheus monitoorib~~
+  - ~~defineerin IP-d mida Prometheus monitoorib~~
   **29.04 muudatused**
   - [302.json](/etc/prometheus/scrape_configs/302.json) jt. failides on klasside põhiselt defineeritud kõik DNS kirjed, mis vastavad klasside arvutitle. 
   - Prometheus loeb need kirjed eraldiseisvatest failidest (põhiconf-i fail näeb puhtam ja loetavam välja)
