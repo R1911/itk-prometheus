@@ -2,7 +2,7 @@ groups:
   - name: Offline
     rules:
       - alert: Offline
-        expr: up == 0
+        expr: up{type="Server"} == 0
         for: 5m
         labels:
           severity: kriitiline
