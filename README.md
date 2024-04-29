@@ -65,9 +65,10 @@ Kuna Alertmanageri saadetud häired on Discordile sõnumiks sobimatus formaadis,
     - Seejärel ```pm2 save```
 
 **29.04 muudatused**
-Hetkel on Prometheusi server dünaamilise IP-ga aadressil 10.10.50.204(:9090)
 
-Kuna ükski teenus otseselt serveri poole IP-ga pöörduma ei pea, ei näe vajadust hetkel veel staatiliseks muuta seda. 
+Hetkel on Prometheusi server serverite võrgus dünaamilise IP-ga 10.10.50.204(:9090)
+
+Kuna ükski teenus otseselt serveri poole IP-ga pöörduma ei pea, ei näe vajadust hetkel veel staatiliseks muuta seda, ilmselt võiks talle lõpuks DNS kirje ka luua ala ```monitor.it.hariduskeskus.ee``` vms
 
 See vajadus võib tekkida kui jõuame veebipõhise graafilise liidese tegemiseni. 
 
