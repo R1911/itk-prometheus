@@ -17,10 +17,10 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
 - põhiconf asub /etc/prometheus kaustas
 - NOTE: apt installib versiooni ```2.42.0```, prometheusi kodulehel on olemas versioon ```2.51.2```. Bugide puhul võib proovida uuemat versiooni otse kodukalt
 
-- [prometheus.yml](/etc/prometheus/prometheus.yml)
+- [/etc/prometheus/prometheus.yml](/etc/prometheus/prometheus.yml)
   - ~~defineerin IP-d mida Prometheus monitoorib~~
   - **29.04 muudatused**
-  - [302.json](/etc/prometheus/scrape_configs/302.json) jt. failides on klasside põhiselt defineeritud kõik DNS kirjed, mis vastavad klasside arvutitle. 
+  - [/etc/prometheus/scrape_configs/302.json](/etc/prometheus/scrape_configs/302.json) jt. failides on klasside põhiselt defineeritud kõik DNS kirjed, mis vastavad klasside arvutitle. 
   - Prometheus loeb need kirjed eraldiseisvatest failidest (põhiconf-i fail näeb puhtam ja loetavam välja)
   - Kõik erinevad grupid on defineeritud eraldi "job_name"-idega
   ![Service Discovery](/docs/img/firefox_CoMCmAVtkQ.png)
@@ -31,7 +31,7 @@ Prometheusi saab Debian-based Linuxi peal installida lihtsalt
   
   ![Defined machines](/docs/img/firefox_dFiuj8rGMQ.png)
 
-- [alerts.yml](/etc/prometheus/alerts.yml)
+- [/etc/prometheus/alerts.yml](/etc/prometheus/alerts.yml)
   - defineerin eraldi häired [alerts.yml](/etc/prometheus/alerts.yml) failis
 
   - Prometheus tuvastab häired ning et defineeritud seadmed on offline (hetkel on nad offline sellepärast, et neil pole agente)
@@ -55,7 +55,7 @@ Kuna Alertmanageri saadetud häired on Discordile sõnumiks sobimatus formaadis,
     - ```cd vaheliides```
     - ```npm i express request dotenv && npm i -g pm2```
     - ```nano index.js```
-    - [index.js](/srv/nodeSrv/index.js)
+    - [/srv/nodeSrv/index.js](/srv/nodeSrv/index.js)
     - ```nano .env```
     - .env faili kirjuta "WEBHOOK_URL=webhooki URL mille saad Discordist"
     - scripti taustal run-imiseks```pm2 start index.js --name vaheliides```
@@ -66,7 +66,9 @@ Kuna Alertmanageri saadetud häired on Discordile sõnumiks sobimatus formaadis,
 
 **29.04 muudatused**
 Hetkel on Prometheusi server dünaamilise IP-ga aadressil 10.10.50.204(:9090)
+
 Kuna ükski teenus otseselt serveri poole IP-ga pöörduma ei pea, ei näe vajadust hetkel veel staatiliseks muuta seda. 
+
 See vajadus võib tekkida kui jõuame veebipõhise graafilise liidese tegemiseni. 
 
 ### klientide agendid
