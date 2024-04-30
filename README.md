@@ -104,12 +104,39 @@ Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lu
   - vajab testimist
 
 - TODO: Mikrotik exporter
-  - [MKTXP](https://github.com/akpw/mktxp)
-  - vajab testimist
+  - ~~[MKTXP](https://github.com/akpw/mktxp)~~
+  - ~~vajab testimist~~
+  - **30.04 muudatused**
+  - ```sudo apt install python3 pipx```
+  - ```pipx install mktxp```
+  - ```mktxp edit``` ruuteri IP ning vajalikud collectorid
+  - teeme ta service-iks ```sudo nano /etc/systemd/system/prometheus-mktxp-exporter.service```
+  
+  ```[Unit]
+Description=MKTXP Exporter
+
+[Service]
+ExecStart=/home/user/.local/bin/mktxp export
+
+[Install]
+WantedBy=default.target
+```
+  - ```sudo systemctl daemon-reload && sudo systemctl start prometheus-mktxp-exporter && sudo systemctl enable prometheus-mktxp-exporter```
+  - muudatused [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
+  - MKTXP exporter asub prometheus-i enda peal, pordil 49090
+  ![Ruuteri võrguliiklus](/docs/img/firefox_ZysPgjCZ61.png)
 
 - TODO: switch
-  - [ilmselt see töötab? - snmp exporter](https://github.com/prometheus/snmp_exporter)
-  - vajab testimist
+  - ~~[ilmselt see töötab? - snmp exporter](https://github.com/prometheus/snmp_exporter)~~
+  - ~~vajab testimist~~
+  - **30.04 muudatused**
+  - prometheusi serveri peal: ```sudo apt install prometheus-snmp-exporter```
+  - tegelikult oli vahepeal veel rodu samme, ega see on veits pointless uuesti läbi teha, et seda snmp.yml faili uuesti genereerida, panen [korrektse snmp.yml faili lihtsalt siia](/etc/prometheus/snmp.yml)
+  - Switchi poole peal lõin uue SNMP kasutaja ning "usm" read-only grupi kuhu kasutaja kuulub
+  - testimiseks saab kasutada käsku ```snmpwalk -v3 -u kasutajanimi -l authPriv -a MD5 -A parool -x AES -X privparool switchi.ip```
+  - muudatused said sisse kantud ka [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
+  - snmp exporter asub prometheus-i enda peal, pordil 9116
+  ![Switchi võrguliiklus](/docs/img/firefox_8M8W46ehNw.png)
 
 
 ### graafiline liides
