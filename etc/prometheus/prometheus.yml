@@ -68,16 +68,32 @@ scrape_configs:
   - job_name: 'switch'
     scrape_interval: 1m
     static_configs:
-      - targets: ['10.10.50.2:9100']
+      - targets: ['127.0.0.1:9116']
         labels:
           type: "Võrguseade"
+          __param_target: '10.10.50.2'
+    metrics_path: '/snmp'
+    params:
+      module: [planet_switch]
+    relabel_configs:
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: '127.0.0.1:9116'
 
   - job_name: 'router'
     scrape_interval: 1m
     static_configs:
-      - targets: ['10.10.50.1:9100']
+      - targets: ['172.0.0.1:49090']
         labels:
           type: "Võrguseade"
+          __param_target: '10.10.50.1'
+    relabel_configs:
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: '127.0.0.1:49090'
+
 
   - job_name: 'proxmox'
     scrape_interval: 1m
