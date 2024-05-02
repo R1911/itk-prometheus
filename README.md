@@ -101,7 +101,34 @@ Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lu
 
 - TODO: proxmox exporter
   - [Prometheus Proxmox VE Exporter](https://github.com/prometheus-pve/prometheus-pve-exporter)
-  - vajab testimist
+  - ~~vajab testimist~~
+  - **02.05 muudatused**
+  - proxmoxi peal ```pip install prometheus-pve-exporter```
+  - loo kuhugi pve.yml fail (tegin selle /etc/prometheus kausta), kus defineerid autentimise:
+
+  ```default:
+  user: kasutajanimi@pam
+  password: parool
+  verify_ssl: false
+  port: 9100
+  ```
+  - teeme selle teenuseks ```sudo nano /etc/systemd/system/prometheus-pve-exporter.service```
+  ```
+  [Unit]
+  Description=Prometheus PVE Exporter
+  Wants=network-online.target
+  After=network-online.target
+
+  [Service]
+  User=root
+  Group=root
+  Type=simple
+  ExecStart=/home/loputoo/.local/bin/pve_exporter /etc/prometheus/pve.yml
+
+  [Install]
+  WantedBy=multi-user.target
+  ```
+  - ```systemctl daemon-reload && systemctl enable prometheus-pve-exporter && systemctl start prometheus-pve-exporter```
 
 - TODO: Mikrotik exporter
   - ~~[MKTXP](https://github.com/akpw/mktxp)~~
