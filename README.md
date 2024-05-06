@@ -86,7 +86,7 @@ Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lu
 
 - windowsi masinate jaoks windows_exporter
   - .msi installeri saab [siit](https://github.com/prometheus-community/windows_exporter/releases)
-  - olenevalt sellest, mis "collectoreid" antud seadmel vaja läheb, tuleb installida exporter CMD/powershell käsuga. kõige pealt ```cd kausta/asukoht/kus/.msi/asub``` asukohta kus allalaetud .msi installer asub. 
+  - olenevalt sellest, mis "collectoreid" antud lõppseadmel vaja läheb, tuleb installida exporter CMD/powershell käsuga. kõige pealt ```cd kausta/asukoht/kus/.msi/asub```. 
   Seejärel näiteks:
   - ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,cs,logical_disk,service,memory" ADD_FIREWALL_EXCEPTION="yes"```
 
@@ -96,39 +96,43 @@ Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lu
     ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="logical_disk" ADD_FIREWALL_EXCEPTION="yes"```
   
   - serverite installer:
-  ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="service" ADD_FIREWALL_EXCEPTION="yes"```
+  ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,memory,logical_disk,service" ADD_FIREWALL_EXCEPTION="yes"```
   Ilmselt rohkem infot pole vaja kui et kas server on online ja mis seisus teenused on?
 
 - TODO: proxmox exporter
   - [Prometheus Proxmox VE Exporter](https://github.com/prometheus-pve/prometheus-pve-exporter)
   - ~~vajab testimist~~
   - **02.05 muudatused**
-  - proxmoxi peal ```pip install prometheus-pve-exporter```
+  - Proxmoxi VE monitoorimiseks (hetkel töötavad virtuaalmasinad/nende uptime/ressursi kasutuse etc)
+    proxmoxi peal ```pip install prometheus-pve-exporter```
   - loo kuhugi pve.yml fail (tegin selle /etc/prometheus kausta), kus defineerid autentimise:
 
-  ```default:
+  ```
+  default:
   user: kasutajanimi@pam
   password: parool
   verify_ssl: false
-  port: 9100
   ```
   - teeme selle teenuseks ```sudo nano /etc/systemd/system/prometheus-pve-exporter.service```
   ```
-  [Unit]
-  Description=Prometheus PVE Exporter
-  Wants=network-online.target
-  After=network-online.target
+[Unit]
+Description=Prometheus PVE Exporter
+Wants=network-online.target
+After=network-online.target
 
-  [Service]
-  User=root
-  Group=root
-  Type=simple
-  ExecStart=/home/loputoo/.local/bin/pve_exporter /etc/prometheus/pve.yml
+[Service]
+User=loputoo
+Group=loputoo
+Type=simple
+WorkingDirectory=/home/loputoo/.local/bin
+ExecStart=/home/loputoo/.local/bin/pve_exporter --web.listen-address 10.10.60.2:9101 --config.file /etc/prometheus/pve.yml
 
-  [Install]
-  WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target
   ```
-  - ```systemctl daemon-reload && systemctl enable prometheus-pve-exporter && systemctl start prometheus-pve-exporter```
+  - ```sudo systemctl daemon-reload && sudo systemctl enable prometheus-pve-exporter && sudo systemctl start prometheus-pve-exporter```
+  - muudatused [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
+  
 
 - TODO: Mikrotik exporter
   - ~~[MKTXP](https://github.com/akpw/mktxp)~~

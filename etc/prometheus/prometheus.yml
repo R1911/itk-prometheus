@@ -2,111 +2,119 @@ global:
   scrape_interval: 1m
 
 scrape_configs:
-
-  - job_name: 'linux_servers'
+  - job_name: "linux_servers"
     scrape_interval: 1m
     static_configs:
-      - targets: ['10.10.50.6:9100','10.10.60.4:9100']
+      - targets: ["10.10.50.6:9100"]
         labels:
           type: "Server"
-
-  - job_name: 'windows_servers'
-    scrape_interval: 1m
-    static_configs:
-      - targets: ['10.10.50.5:9182','10.10.60.3:9182']
+          instance: "NAS"
+      - targets: ["10.10.50.4:9100"]
         labels:
           type: "Server"
+          instance: "FOG"
+      - targets: ["10.10.60.2:9100"]
+        labels:
+          type: "Server"
+          instance: "Proxmox"
+      - targets: ["10.10.50.204:9100"]
+        labels:
+          type: "Server"
+          instance: "Prometheus"
 
-  - job_name: '302_workstations'
-    file_sd_configs:
-      - files:
-        - '/etc/prometheus/scrape_configs/302.json'
-        refresh_interval: 12h
-    relabel_configs:
-      - source_labels: [__address__]
-        regex: '^(.*)$'
-        replacement: '${1}:9182'
-        target_label: __address__
-    scrape_interval: 1h
 
-  - job_name: '303_workstations'
-    file_sd_configs:
-      - files:
-        - '/etc/prometheus/scrape_configs/303.json'
-        refresh_interval: 12h
-    relabel_configs:
-      - source_labels: [__address__]
-        regex: '^(.*)$'
-        replacement: '${1}:9182'
-        target_label: __address__
-    scrape_interval: 1h
-
-  - job_name: '304_workstations'
-    file_sd_configs:
-      - files:
-        - '/etc/prometheus/scrape_configs/304.json'
-        refresh_interval: 12h
-    relabel_configs:
-      - source_labels: [__address__]
-        regex: '^(.*)$'
-        replacement: '${1}:9182'
-        target_label: __address__
-    scrape_interval: 1h
-
-  - job_name: '308_workstations'
-    file_sd_configs:
-      - files:
-        - '/etc/prometheus/scrape_configs/308.json'
-        refresh_interval: 12h
-    relabel_configs:
-      - source_labels: [__address__]
-        regex: '^(.*)$'
-        replacement: '${1}:9182'
-        target_label: __address__
-    scrape_interval: 1h
-
-  - job_name: 'switch'
+  - job_name: "windows_servers"
     scrape_interval: 1m
     static_configs:
-      - targets: ['127.0.0.1:9116']
+      - targets: ["10.10.60.3:9182"]
+        labels:
+          type: "Server"
+          instance: "DC2"
+      - targets: ["10.10.50.5:9182"]
+        labels:
+          type: "Server"
+          instance: "DC1"
+
+  - job_name: "302_workstations"
+    file_sd_configs:
+      - files:
+          - "/etc/prometheus/scrape_configs/302.json"
+        refresh_interval: 12h
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: "^(.*)$"
+        replacement: "${1}:9182"
+        target_label: __address__
+    scrape_interval: 5m
+
+  - job_name: "303_workstations"
+    file_sd_configs:
+      - files:
+          - "/etc/prometheus/scrape_configs/303.json"
+        refresh_interval: 12h
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: "^(.*)$"
+        replacement: "${1}:9182"
+        target_label: __address__
+    scrape_interval: 5m
+
+  - job_name: "304_workstations"
+    file_sd_configs:
+      - files:
+          - "/etc/prometheus/scrape_configs/304.json"
+        refresh_interval: 12h
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: "^(.*)$"
+        replacement: "${1}:9182"
+        target_label: __address__
+    scrape_interval: 5m
+
+  - job_name: "308_workstations"
+    file_sd_configs:
+      - files:
+          - "/etc/prometheus/scrape_configs/308.json"
+        refresh_interval: 12h
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: "^(.*)$"
+        replacement: "${1}:9182"
+        target_label: __address__
+    scrape_interval: 5m
+
+  - job_name: "switch"
+    scrape_interval: 1m
+    static_configs:
+      - targets: ["127.0.0.1:9116"]
         labels:
           type: "Võrguseade"
-          __param_target: '10.10.50.2'
-    metrics_path: '/snmp'
+          __param_target: "10.10.50.2"
+          instance: "Switch"
+    metrics_path: "/snmp"
     params:
       module: [planet_switch]
     relabel_configs:
-      - source_labels: [__param_target]
-        target_label: instance
       - target_label: __address__
-        replacement: '127.0.0.1:9116'
+        replacement: "127.0.0.1:9116"
 
-  - job_name: 'router'
+  - job_name: "router"
     scrape_interval: 1m
     static_configs:
-      - targets: ['172.0.0.1:49090']
+      - targets: ["172.0.0.1:49090"]
         labels:
           type: "Võrguseade"
-          __param_target: '10.10.50.1'
+          __param_target: "10.10.50.1"
+          instance: "Router"
     relabel_configs:
-      - source_labels: [__param_target]
-        target_label: instance
       - target_label: __address__
-        replacement: '127.0.0.1:49090'
-
-
-  - job_name: 'proxmox'
-    scrape_interval: 1m
-    static_configs:
-      - targets: ['10.10.60.2:9100']
-        labels:
-          type: "Proxmox"
+        replacement: "127.0.0.1:49090"
 
 alerting:
   alertmanagers:
     - static_configs:
         - targets:
-            - 'localhost:9093'
+            - "localhost:9093"
 
 rule_files:
-  - 'alerts.yml'
+  - "alerts.yml"
