@@ -86,15 +86,17 @@ Olenevalt lõppseadistusest tuleb ilmselt serveri reeglite confi muuta
   - Turvalisuse tõstmiseks muutsin kõik serverid HTTP pealt HTTPS peale, ning lisasin ka basic autentimise
     - Selleks genereerisin selfsigned sertifikaadi ning võtme, ning konfigureerisin kõikide serverite node-exporterid kasutama seda --web.config.file-i. Seda siis iga serveri peal. 
     ```sudo nano /etc/systemd/system/prometheus-node-exporter.service```
-    - ```[Unit]
-Description=Node Exporter
-Wants=network-online.target
-After=network-online.target
-[Service]
-Type=simple
-ExecStart=/usr/bin/prometheus-node-exporter --web.config.file="/etc/prometheus/config.yml"
-[Install]
-WantedBy=multi-user.target```
+    ```
+    [Unit]
+    Description=Node Exporter
+    Wants=network-online.target
+    After=network-online.target
+    [Service]
+    Type=simple
+    ExecStart=/usr/bin/prometheus-node-exporter --web.config.file="/etc/prometheus/config.yml"
+    [Install]
+    WantedBy=multi-user.target
+    ```
     - [config.yml asub siin, eemaldasin hashitud parooli, sest see repo on avalik 🙃](/etc/prometheus/config.yml)
 
 - windowsi masinate jaoks windows_exporter
@@ -129,14 +131,16 @@ WantedBy=multi-user.target```
   - ```mktxp edit``` ruuteri IP ning vajalikud collectorid
   - teeme ta service-iks ```sudo nano /etc/systemd/system/prometheus-mktxp-exporter.service```
   
-  ```[Unit]
-Description=MKTXP Exporter
+  ```
+  [Unit]
+  Description=MKTXP Exporter
 
-[Service]
-ExecStart=/home/user/.local/bin/mktxp export
+  [Service]
+  ExecStart=/home/user/.local/bin/mktxp export
 
-[Install]
-WantedBy=default.target```
+  [Install]
+  WantedBy=default.target
+  ```
   - ```sudo systemctl daemon-reload && sudo systemctl start prometheus-mktxp-exporter && sudo systemctl enable prometheus-mktxp-exporter```
   - muudatused [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
   - MKTXP exporter asub prometheus-i enda peal, pordil 49090
@@ -161,29 +165,33 @@ WantedBy=default.target```
   - snmp exporter asub prometheus-i enda peal, defaultis pordil 9116
   - Kuna meie lahenduses on vaja kahte erinevat SNMP exporterit, muutsin ära snmp-exporter teenuse confi, annan talle kasutamiseks snmp-switch.yml faili ning eelnevalt loodud TLS webconfi:
   ```sudo nano /etc/systemd/system/prometheus-snmp-exporter.service```
-  - ```[Unit]
-Description=SNMP Exporter
-Wants=network-online.target
-After=network-online.target
-[Service]
-Type=simple
-ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-switch.yml"
-[Install]
-WantedBy=multi-user.target```
+  ```
+  [Unit]
+  Description=SNMP Exporter
+  Wants=network-online.target
+  After=network-online.target
+  [Service]
+  Type=simple
+  ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-switch.yml"
+  [Install]
+  WantedBy=multi-user.target
+  ```
   ![Switchi võrguliiklus](/docs/img/firefox_8M8W46ehNw.png)
 
 - TrueNAS server
   - Kuna TrueNAS on FreeBSD OS-i peal, ning selle peale ei saa korralikult node_exporter-it paigaldada, kasutasime samuti SNMP exporterit
   - Põhimõtteliselt tegin lihtsalt uue service faili, mis kasutab teist snmp confi, ning töötab Switchi exporterist erineva pordi peal. [snmp-truenas.yml](/etc/prometheus/snmp-truenas.yml)
-  ```[Unit]
-Description=SNMP Exporter
-Wants=network-online.target
-After=network-online.target
-[Service]
-Type=simple
-ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-truenas.yml" --web.listen-address=:9117
-[Install]
-WantedBy=multi-user.target```
+  ```
+  [Unit]
+  Description=SNMP Exporter
+  Wants=network-online.target
+  After=network-online.target
+  [Service]
+  Type=simple
+  ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-truenas.yml" --web.listen-address=:9117
+  [Install]
+  WantedBy=multi-user.target
+  ```
 
 ### graafiline liides
 
