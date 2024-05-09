@@ -1,4 +1,4 @@
-# Prometheus + Alertmanager + Discord monitooringusüsteem
+# Prometheus + Alertmanager + Grafana + Discord monitooringusüsteem
  
 ## alustuseks
 
@@ -180,4 +180,7 @@ WantedBy=default.target
 ![Grafana](/docs/img/pPvZ1z1.png)
 
 - C ketta kasutuse monitooringuks expression %-des ```100 - (windows_logical_disk_free_bytes{volume="C:"} / windows_logical_disk_size_bytes{volume="C:"} * 100)```
+
+Mõned customized Grafana dashboardid panin kausta (grafana dashboardid)[/grafana-dashboardid]
+Dashboardide JSON faile saab importida vajutades Grafana veebiliideses vasakul menüüs "Dashboards" ning seejärel paremal 'New' > 'Import' ning seejärel kleepides json-i sisu 'Import via dashboard JSON model' lahtrisse.
 
