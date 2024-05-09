@@ -679,8 +679,8 @@ planet_switch:
   version: 3
   auth:
     security_level: authPriv
-    username: prometheus
-    password: prometheus
+    username: kasutajanimi
+    password: parool
     auth_protocol: MD5
     priv_protocol: AES
-    priv_password: prometheus
+    priv_password: privparool

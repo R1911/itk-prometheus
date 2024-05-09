@@ -1,0 +1,16 @@
+collectors:
+  enabled:  cpu,cs,logical_disk,net,os,service,process,memory,dns,dhcp
+collector:
+  service:
+    services-where: Name='NTDS' OR Name='DNS' OR Name='DHCP' OR Name='KDC' OR Name='Netlogon' OR Name='CertSvc' OR Name='LanmanServer'
+  scheduled_task:
+    include: /Microsoft/.+
+log:
+  level: debug
+scrape:
+  timeout-margin: 0.5
+telemetry:
+  path: /metrics
+  max-requests: 5
+web:
+  listen-address: ":9182"

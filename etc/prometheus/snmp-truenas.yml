@@ -1,0 +1,471 @@
+# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
+truenas:
+  walk:
+  - 1.3.6.1.2.1.1
+  - 1.3.6.1.2.1.2.2.1.13
+  - 1.3.6.1.2.1.2.2.1.14
+  - 1.3.6.1.2.1.2.2.1.19
+  - 1.3.6.1.2.1.2.2.1.20
+  - 1.3.6.1.2.1.2.2.1.7
+  - 1.3.6.1.2.1.2.2.1.8
+  - 1.3.6.1.2.1.2.2.1.9
+  - 1.3.6.1.2.1.25.2.3.1.3
+  - 1.3.6.1.2.1.25.2.3.1.5
+  - 1.3.6.1.2.1.25.2.3.1.6
+  - 1.3.6.1.2.1.25.3.2.1.3
+  - 1.3.6.1.2.1.25.3.3.1.2
+  - 1.3.6.1.2.1.31.1.1.1.1
+  - 1.3.6.1.2.1.31.1.1.1.10
+  - 1.3.6.1.2.1.31.1.1.1.6
+  - 1.3.6.1.4.1.2021.10.1.2
+  - 1.3.6.1.4.1.2021.10.1.5
+  - 1.3.6.1.4.1.2021.13.15.1.1
+  - 1.3.6.1.4.1.2021.9.1.10
+  - 1.3.6.1.4.1.2021.9.1.6
+  - 1.3.6.1.4.1.2021.9.1.7
+  - 1.3.6.1.4.1.2021.9.1.8
+  - 1.3.6.1.4.1.2021.9.1.9
+  get:
+  - 1.3.6.1.2.1.25.1.1.0
+  - 1.3.6.1.2.1.25.1.5.0
+  - 1.3.6.1.2.1.25.1.6.0
+  - 1.3.6.1.4.1.2021.11.10.0
+  - 1.3.6.1.4.1.2021.4.11.0
+  - 1.3.6.1.4.1.2021.4.5.0
+  - 1.3.6.1.4.1.2021.4.6.0
+  metrics:
+  - name: sysDescr
+    oid: 1.3.6.1.2.1.1.1
+    type: DisplayString
+    help: A textual description of the entity - 1.3.6.1.2.1.1.1
+  - name: sysObjectID
+    oid: 1.3.6.1.2.1.1.2
+    type: OctetString
+    help: The vendor's authoritative identification of the network management subsystem
+      contained in the entity - 1.3.6.1.2.1.1.2
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+    help: The time (in hundredths of a second) since the network management portion
+      of the system was last re-initialized. - 1.3.6.1.2.1.1.3
+  - name: sysContact
+    oid: 1.3.6.1.2.1.1.4
+    type: DisplayString
+    help: The textual identification of the contact person for this managed node,
+      together with information on how to contact this person - 1.3.6.1.2.1.1.4
+  - name: sysName
+    oid: 1.3.6.1.2.1.1.5
+    type: DisplayString
+    help: An administratively-assigned name for this managed node - 1.3.6.1.2.1.1.5
+  - name: sysLocation
+    oid: 1.3.6.1.2.1.1.6
+    type: DisplayString
+    help: The physical location of this node (e.g., 'telephone closet, 3rd floor')
+      - 1.3.6.1.2.1.1.6
+  - name: sysServices
+    oid: 1.3.6.1.2.1.1.7
+    type: gauge
+    help: A value which indicates the set of services that this entity may potentially
+      offer - 1.3.6.1.2.1.1.7
+  - name: sysORLastChange
+    oid: 1.3.6.1.2.1.1.8
+    type: gauge
+    help: The value of sysUpTime at the time of the most recent change in state or
+      value of any instance of sysORID. - 1.3.6.1.2.1.1.8
+  - name: sysORIndex
+    oid: 1.3.6.1.2.1.1.9.1.1
+    type: gauge
+    help: The auxiliary variable used for identifying instances of the columnar objects
+      in the sysORTable. - 1.3.6.1.2.1.1.9.1.1
+    indexes:
+    - labelname: sysORIndex
+      type: gauge
+  - name: sysORID
+    oid: 1.3.6.1.2.1.1.9.1.2
+    type: OctetString
+    help: An authoritative identification of a capabilities statement with respect
+      to various MIB modules supported by the local SNMP application acting as a command
+      responder. - 1.3.6.1.2.1.1.9.1.2
+    indexes:
+    - labelname: sysORIndex
+      type: gauge
+  - name: sysORDescr
+    oid: 1.3.6.1.2.1.1.9.1.3
+    type: DisplayString
+    help: A textual description of the capabilities identified by the corresponding
+      instance of sysORID. - 1.3.6.1.2.1.1.9.1.3
+    indexes:
+    - labelname: sysORIndex
+      type: gauge
+  - name: sysORUpTime
+    oid: 1.3.6.1.2.1.1.9.1.4
+    type: gauge
+    help: The value of sysUpTime at the time this conceptual row was last instantiated.
+      - 1.3.6.1.2.1.1.9.1.4
+    indexes:
+    - labelname: sysORIndex
+      type: gauge
+  - name: ifInDiscards
+    oid: 1.3.6.1.2.1.2.2.1.13
+    type: counter
+    help: The number of inbound packets which were chosen to be discarded even though
+      no errors had been detected to prevent their being deliverable to a higher-layer
+      protocol - 1.3.6.1.2.1.2.2.1.13
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifInErrors
+    oid: 1.3.6.1.2.1.2.2.1.14
+    type: counter
+    help: For packet-oriented interfaces, the number of inbound packets that contained
+      errors preventing them from being deliverable to a higher-layer protocol - 1.3.6.1.2.1.2.2.1.14
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifOutDiscards
+    oid: 1.3.6.1.2.1.2.2.1.19
+    type: counter
+    help: The number of outbound packets which were chosen to be discarded even though
+      no errors had been detected to prevent their being transmitted - 1.3.6.1.2.1.2.2.1.19
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifOutErrors
+    oid: 1.3.6.1.2.1.2.2.1.20
+    type: counter
+    help: For packet-oriented interfaces, the number of outbound packets that could
+      not be transmitted because of errors - 1.3.6.1.2.1.2.2.1.20
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifAdminStatus
+    oid: 1.3.6.1.2.1.2.2.1.7
+    type: gauge
+    help: The desired state of the interface - 1.3.6.1.2.1.2.2.1.7
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+    enum_values:
+      1: up
+      2: down
+      3: testing
+  - name: ifOperStatus
+    oid: 1.3.6.1.2.1.2.2.1.8
+    type: gauge
+    help: The current operational state of the interface - 1.3.6.1.2.1.2.2.1.8
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+    enum_values:
+      1: up
+      2: down
+      3: testing
+      4: unknown
+      5: dormant
+      6: notPresent
+      7: lowerLayerDown
+  - name: ifLastChange
+    oid: 1.3.6.1.2.1.2.2.1.9
+    type: gauge
+    help: The value of sysUpTime at the time the interface entered its current operational
+      state - 1.3.6.1.2.1.2.2.1.9
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: hrSystemUptime
+    oid: 1.3.6.1.2.1.25.1.1
+    type: gauge
+    help: The amount of time since this host was last initialized - 1.3.6.1.2.1.25.1.1
+  - name: hrSystemNumUsers
+    oid: 1.3.6.1.2.1.25.1.5
+    type: gauge
+    help: The number of user sessions for which this host is storing state information
+      - 1.3.6.1.2.1.25.1.5
+  - name: hrSystemProcesses
+    oid: 1.3.6.1.2.1.25.1.6
+    type: gauge
+    help: The number of process contexts currently loaded or running on this system.
+      - 1.3.6.1.2.1.25.1.6
+  - name: hrStorageDescr
+    oid: 1.3.6.1.2.1.25.2.3.1.3
+    type: DisplayString
+    help: A description of the type and instance of the storage described by this
+      entry. - 1.3.6.1.2.1.25.2.3.1.3
+    indexes:
+    - labelname: hrStorageIndex
+      type: gauge
+    lookups:
+    - labels:
+      - hrStorageIndex
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
+  - name: hrStorageSize
+    oid: 1.3.6.1.2.1.25.2.3.1.5
+    type: gauge
+    help: The size of the storage represented by this entry, in units of hrStorageAllocationUnits
+      - 1.3.6.1.2.1.25.2.3.1.5
+    indexes:
+    - labelname: hrStorageIndex
+      type: gauge
+    lookups:
+    - labels:
+      - hrStorageIndex
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
+  - name: hrStorageUsed
+    oid: 1.3.6.1.2.1.25.2.3.1.6
+    type: gauge
+    help: The amount of the storage represented by this entry that is allocated, in
+      units of hrStorageAllocationUnits. - 1.3.6.1.2.1.25.2.3.1.6
+    indexes:
+    - labelname: hrStorageIndex
+      type: gauge
+    lookups:
+    - labels:
+      - hrStorageIndex
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
+  - name: hrProcessorLoad
+    oid: 1.3.6.1.2.1.25.3.3.1.2
+    type: gauge
+    help: The average, over the last minute, of the percentage of time that this processor
+      was not idle - 1.3.6.1.2.1.25.3.3.1.2
+    indexes:
+    - labelname: hrDeviceIndex
+      type: gauge
+    lookups:
+    - labels:
+      - hrDeviceIndex
+      labelname: hrDeviceDescr
+      oid: 1.3.6.1.2.1.25.3.2.1.3
+      type: DisplayString
+  - name: ifHCOutOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.10
+    type: counter
+    help: The total number of octets transmitted out of the interface, including framing
+      characters - 1.3.6.1.2.1.31.1.1.1.10
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: ifHCInOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.6
+    type: counter
+    help: The total number of octets received on the interface, including framing
+      characters - 1.3.6.1.2.1.31.1.1.1.6
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+    lookups:
+    - labels:
+      - ifIndex
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+      type: DisplayString
+  - name: laLoadInt
+    oid: 1.3.6.1.4.1.2021.10.1.5
+    type: gauge
+    help: The 1,5 and 15 minute load averages as an integer - 1.3.6.1.4.1.2021.10.1.5
+    indexes:
+    - labelname: laIndex
+      type: gauge
+    lookups:
+    - labels:
+      - laIndex
+      labelname: laNames
+      oid: 1.3.6.1.4.1.2021.10.1.2
+      type: DisplayString
+  - name: ssCpuSystem
+    oid: 1.3.6.1.4.1.2021.11.10
+    type: gauge
+    help: The percentage of CPU time spent processing system-level code, calculated
+      over the last minute - 1.3.6.1.4.1.2021.11.10
+  - name: diskIOIndex
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.1
+    type: gauge
+    help: Reference index for each observed device. - 1.3.6.1.4.1.2021.13.15.1.1.1
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIODevice
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.2
+    type: DisplayString
+    help: The name of the device we are counting/checking. - 1.3.6.1.4.1.2021.13.15.1.1.2
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIONRead
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.3
+    type: counter
+    help: The number of bytes read from this device since boot. - 1.3.6.1.4.1.2021.13.15.1.1.3
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIONWritten
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.4
+    type: counter
+    help: The number of bytes written to this device since boot. - 1.3.6.1.4.1.2021.13.15.1.1.4
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIOReads
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.5
+    type: counter
+    help: The number of read accesses from this device since boot. - 1.3.6.1.4.1.2021.13.15.1.1.5
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIOWrites
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.6
+    type: counter
+    help: The number of write accesses to this device since boot. - 1.3.6.1.4.1.2021.13.15.1.1.6
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIOLA1
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.9
+    type: gauge
+    help: The 1 minute average load of disk (%) - 1.3.6.1.4.1.2021.13.15.1.1.9
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIOLA5
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.10
+    type: gauge
+    help: The 5 minute average load of disk (%) - 1.3.6.1.4.1.2021.13.15.1.1.10
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIOLA15
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.11
+    type: gauge
+    help: The 15 minute average load of disk (%) - 1.3.6.1.4.1.2021.13.15.1.1.11
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIONReadX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.12
+    type: counter
+    help: The number of bytes read from this device since boot. - 1.3.6.1.4.1.2021.13.15.1.1.12
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIONWrittenX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.13
+    type: counter
+    help: The number of bytes written to this device since boot. - 1.3.6.1.4.1.2021.13.15.1.1.13
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: diskIOBusyTime
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.14
+    type: counter
+    help: The number of usecs the drive has been busy since boot. - 1.3.6.1.4.1.2021.13.15.1.1.14
+    indexes:
+    - labelname: diskIOIndex
+      type: gauge
+  - name: memTotalFree
+    oid: 1.3.6.1.4.1.2021.4.11
+    type: gauge
+    help: The total amount of memory free or available for use on this host - 1.3.6.1.4.1.2021.4.11
+  - name: memTotalReal
+    oid: 1.3.6.1.4.1.2021.4.5
+    type: gauge
+    help: The total amount of real/physical memory installed on this host. - 1.3.6.1.4.1.2021.4.5
+  - name: memAvailReal
+    oid: 1.3.6.1.4.1.2021.4.6
+    type: gauge
+    help: The amount of real/physical memory currently unused or available. - 1.3.6.1.4.1.2021.4.6
+  - name: dskPercentNode
+    oid: 1.3.6.1.4.1.2021.9.1.10
+    type: gauge
+    help: Percentage of inodes used on disk - 1.3.6.1.4.1.2021.9.1.10
+    indexes:
+    - labelname: dskIndex
+      type: gauge
+  - name: dskTotal
+    oid: 1.3.6.1.4.1.2021.9.1.6
+    type: gauge
+    help: Total size of the disk/partion (kBytes) - 1.3.6.1.4.1.2021.9.1.6
+    indexes:
+    - labelname: dskIndex
+      type: gauge
+  - name: dskAvail
+    oid: 1.3.6.1.4.1.2021.9.1.7
+    type: gauge
+    help: Available space on the disk - 1.3.6.1.4.1.2021.9.1.7
+    indexes:
+    - labelname: dskIndex
+      type: gauge
+  - name: dskUsed
+    oid: 1.3.6.1.4.1.2021.9.1.8
+    type: gauge
+    help: Used space on the disk - 1.3.6.1.4.1.2021.9.1.8
+    indexes:
+    - labelname: dskIndex
+      type: gauge
+  - name: dskPercent
+    oid: 1.3.6.1.4.1.2021.9.1.9
+    type: gauge
+    help: Percentage of space used on disk - 1.3.6.1.4.1.2021.9.1.9
+    indexes:
+    - labelname: dskIndex
+      type: gauge
+  version: 3
+  auth:
+    security_level: authPriv
+    username: kasutajanimi
+    password: parool
+    auth_protocol: MD5
+    priv_protocol: AES
+    priv_password: privparool

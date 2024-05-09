@@ -1,0 +1,15 @@
+tls_server_config:
+  cert_file: prometheus.crt
+  key_file: prometheus.key
+  prefer_server_cipher_suites: true
+
+http_server_config:
+  http2: true
+  headers:
+    Strict-Transport-Security: "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: deny
+    X-XSS-Protection: "1; mode=block"
+
+basic_auth_users:
+  prometheus: hashitudparool.peabolemasiinreal

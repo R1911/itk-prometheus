@@ -77,12 +77,27 @@ See vajadus võib tekkida kui jõuame veebipõhise graafilise liidese tegemiseni
 Olenevalt lõppseadistusest tuleb ilmselt serveri reeglite confi muuta
 
 ~~TODO: Testkeskkonnas see toimib, reaalses keskkonnas on vaja lubada serverile ligipääs igasse eraldatud võrku.~~
-Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lubada ainult DMZ võrku. 
 
 
 - Linuxipõhiste süsteemide peal saab kasutada lihtsalt
 ```sudo apt install prometheus-node-exporter```
   - linuxi default endpoint on pordil **9100**, ehk ```http://masina-ip:9100```
+  - **Muudatused 08.05.2024**
+  - Turvalisuse tõstmiseks muutsin kõik serverid HTTP pealt HTTPS peale, ning lisasin ka basic autentimise
+    - Selleks genereerisin selfsigned sertifikaadi ning võtme, ning konfigureerisin kõikide serverite node-exporterid kasutama seda --web.config.file-i. Seda siis iga serveri peal. 
+    ```sudo nano /etc/systemd/system/prometheus-node-exporter.service```
+    - ```
+    [Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-node-exporter --web.config.file="/etc/prometheus/config.yml"
+[Install]
+WantedBy=multi-user.target
+    ```
+    - [config.yml asub siin, eemaldasin hashitud parooli, sest see repo on avalik 🙃](/etc/prometheus/config.yml)
 
 - windowsi masinate jaoks windows_exporter
   - .msi installeri saab [siit](https://github.com/prometheus-community/windows_exporter/releases)
@@ -94,47 +109,20 @@ Serverite võrgust on lubatud ligipääs klasside võrkudesse, eraldi on vaja lu
   - **29.04 muudatused** - hetkeseisuga võiks juba klassidesse masspaigaldusega windows_exporteri ära panna
     - klasside töömasinate installer:
     ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="logical_disk" ADD_FIREWALL_EXCEPTION="yes"```
+      - Hetkeseisuga klasside töömasinad on ja jäävad HTTP peale, plaanis pole hetkel neid HTTPS peale muuta, kuna nad on niikuinii isoleeritud, ning andmetest exporditakse vaid local_disk andmeid
   
   - serverite installer:
-  ```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,memory,logical_disk,service" ADD_FIREWALL_EXCEPTION="yes"```
-  Ilmselt rohkem infot pole vaja kui et kas server on online ja mis seisus teenused on?
-
-- TODO: proxmox exporter
-  - [Prometheus Proxmox VE Exporter](https://github.com/prometheus-pve/prometheus-pve-exporter)
-  - ~~vajab testimist~~
-  - **02.05 muudatused**
-  - Proxmoxi VE monitoorimiseks (hetkel töötavad virtuaalmasinad/nende uptime/ressursi kasutuse etc)
-    proxmoxi peal ```pip install prometheus-pve-exporter```
-  - loo kuhugi pve.yml fail (tegin selle /etc/prometheus kausta), kus defineerid autentimise:
-
-  ```
-  default:
-  user: kasutajanimi@pam
-  password: parool
-  verify_ssl: false
-  ```
-  - teeme selle teenuseks ```sudo nano /etc/systemd/system/prometheus-pve-exporter.service```
-  ```
-[Unit]
-Description=Prometheus PVE Exporter
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-User=loputoo
-Group=loputoo
-Type=simple
-WorkingDirectory=/home/loputoo/.local/bin
-ExecStart=/home/loputoo/.local/bin/pve_exporter --web.listen-address 10.10.60.2:9101 --config.file /etc/prometheus/pve.yml
-
-[Install]
-WantedBy=multi-user.target
-  ```
-  - ```sudo systemctl daemon-reload && sudo systemctl enable prometheus-pve-exporter && sudo systemctl start prometheus-pve-exporter```
-  - muudatused [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
+  ~~```msiexec /i windows_exporter-0.25.1-amd64.msi ENABLED_COLLECTORS="cpu,memory,logical_disk,service,os" ADD_FIREWALL_EXCEPTION="yes"```~~
+    - - **Muudatused 08.05.2024**
+    - sarnaselt linuxi serveritele tegin ka windowsi serverid TLS põhiseks, kasutades põhimõtteliselt sama confi, mis Linuxi masinatel
+    - tulenevalt sellest pidan muutma ka ülal oleva commandiga paigaldatud exporteri configi. Juba paigaldatud exporterit sai muuta ainult läbi registry editor-i.
+    - ```Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\windows_exporter```
+      - Seal tuli muuta "ImagePath" väärtust. Konfigureerisin selle ümber nii, et edaspidi muudatuste tegemiseks ei pea registriväärtuseid muutma, enabled collectorite info võtab ta [config.yml](/c:/ProgramFiles/windows_exporter/config.yml) failist, ning TLS ja auth info võtab ta [web-config.yml](/c:/ProgramFiles/windows_exporter/web-config.yml) failist. Cert ning võti asuvad samuti windows_exporteri juurkastas. 
+      ```"C:\Program Files\windows_exporter\windows_exporter.exe" --config.file "C:\Program Files\windows_exporter\config.yml" --web.config.file "C:\Program Files\windows_exporter\web-config.yml"```. Config faili muutmisel on oluline formaat, muidu teenus failib. Confi failide muutmisel tuleb teenus restartida. 
+      - Et vältida Prometheusi üle koormamist ebavajaliku infoga defineerisin ka ära, milliste "teenuste" (windows services) andmeid ta kogub, sest Windowsil on üüratu hulk teenuseid. Selleks jäid hetkel siis teenused mille ```Name='NTDS' OR Name='DNS' OR Name='DHCP' OR Name='KDC' OR Name='Netlogon' OR Name='CertSvc' OR Name='LanmanServer'```
   
 
-- TODO: Mikrotik exporter
+- Mikrotik exporter
   - ~~[MKTXP](https://github.com/akpw/mktxp)~~
   - ~~vajab testimist~~
   - **30.04 muudatused**
@@ -143,7 +131,8 @@ WantedBy=multi-user.target
   - ```mktxp edit``` ruuteri IP ning vajalikud collectorid
   - teeme ta service-iks ```sudo nano /etc/systemd/system/prometheus-mktxp-exporter.service```
   
-  ```[Unit]
+  ```
+[Unit]
 Description=MKTXP Exporter
 
 [Service]
@@ -155,20 +144,54 @@ WantedBy=default.target
   - ```sudo systemctl daemon-reload && sudo systemctl start prometheus-mktxp-exporter && sudo systemctl enable prometheus-mktxp-exporter```
   - muudatused [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
   - MKTXP exporter asub prometheus-i enda peal, pordil 49090
+  
+  **muudatused 08.05.2024**
+  - Tehniliselt ainuke exporter mis ei võimalda TLS encryptimist ning basic auth-i on MKTXP exporter. 
+  - Proovisin teha sellest workaroundi, luues Prometheusi serveri peale NGINX-iga reverse proxy, kui tehniliselt jääb originaal pordil töötav MKTXP exporter ikkagi avatuks. 
+  - Prometheus kuulab seda siiski läbi reverse-proxy-tud TLS pordi. 
+
   ![Ruuteri võrguliiklus](/docs/img/firefox_ZysPgjCZ61.png)
 
-- TODO: switch
+- Switch
   - ~~[ilmselt see töötab? - snmp exporter](https://github.com/prometheus/snmp_exporter)~~
   - ~~vajab testimist~~
   - **30.04 muudatused**
+  - Switchi andmete jaoks kasutame SNMP-d. 
   - prometheusi serveri peal: ```sudo apt install prometheus-snmp-exporter```
-  - tegelikult oli vahepeal veel rodu samme, ega see on veits pointless uuesti läbi teha, et seda snmp.yml faili uuesti genereerida, panen [korrektse snmp.yml faili lihtsalt siia](/etc/prometheus/snmp.yml)
+  - tegelikult oli vahepeal veel rodu samme, ega see on veits pointless uuesti läbi teha, et seda snmp.yml faili uuesti genereerida, panen [korrektse snmp-switch.yml faili lihtsalt siia, faili lõpus tuleb muuta kasutajanimi/parool](/etc/prometheus/snmp-switch.yml)
   - Switchi poole peal lõin uue SNMP kasutaja ning "usm" read-only grupi kuhu kasutaja kuulub
   - testimiseks saab kasutada käsku ```snmpwalk -v3 -u kasutajanimi -l authPriv -a MD5 -A parool -x AES -X privparool switchi.ip```
   - muudatused said sisse kantud ka [prometheusi põhiconfi faili](/etc/prometheus/prometheus.yml)
-  - snmp exporter asub prometheus-i enda peal, pordil 9116
+  - snmp exporter asub prometheus-i enda peal, defaultis pordil 9116
+  - Kuna meie lahenduses on vaja kahte erinevat SNMP exporterit, muutsin ära snmp-exporter teenuse confi, annan talle kasutamiseks snmp-switch.yml faili ning eelnevalt loodud TLS webconfi:
+  ```sudo nano /etc/systemd/system/prometheus-snmp-exporter.service```
+  - ```
+[Unit]
+Description=SNMP Exporter
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-switch.yml"
+[Install]
+WantedBy=multi-user.target
+```
   ![Switchi võrguliiklus](/docs/img/firefox_8M8W46ehNw.png)
 
+- TrueNAS server
+  - Kuna TrueNAS on FreeBSD OS-i peal, ning selle peale ei saa korralikult node_exporter-it paigaldada, kasutasime samuti SNMP exporterit
+  - Põhimõtteliselt tegin lihtsalt uue service faili, mis kasutab teist snmp confi, ning töötab Switchi exporterist erineva pordi peal. [snmp-truenas.yml](/etc/prometheus/snmp-truenas.yml)
+  ```
+  [Unit]
+Description=SNMP Exporter
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-truenas.yml" --web.listen-address=:9117
+[Install]
+WantedBy=multi-user.target
+  ```
 
 ### graafiline liides
 
@@ -178,8 +201,6 @@ WantedBy=default.target
 - miinuseks on vist see, et free account on limiteeritud, võibolla vaja leida alternatiiv
 
 ![Grafana](/docs/img/pPvZ1z1.png)
-
-- C ketta kasutuse monitooringuks expression %-des ```100 - (windows_logical_disk_free_bytes{volume="C:"} / windows_logical_disk_size_bytes{volume="C:"} * 100)```
 
 Mõned customized Grafana dashboardid panin kausta (grafana dashboardid)[/grafana-dashboardid]
 Dashboardide JSON faile saab importida vajutades Grafana veebiliideses vasakul menüüs "Dashboards" ning seejärel paremal 'New' > 'Import' ning seejärel kleepides json-i sisu 'Import via dashboard JSON model' lahtrisse.
