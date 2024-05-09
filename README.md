@@ -205,3 +205,12 @@ WantedBy=multi-user.target
 Mõned customized Grafana dashboardid panin kausta (grafana dashboardid)[/grafana-dashboardid]
 Dashboardide JSON faile saab importida vajutades Grafana veebiliideses vasakul menüüs "Dashboards" ning seejärel paremal 'New' > 'Import' ning seejärel kleepides json-i sisu 'Import via dashboard JSON model' lahtrisse.
 
+### Arenguvõimalused
+
+- Kuna soov oleks näha klasside töömasinate kettakasutust profiilide põhiselt, siis seda saaks teha custom textfile collectori lahendusega
+  - Selleks tuleks kõikide klasside exporterid natuke ümber häälestada, st lisaks logical_disk collectorile oleks vaja kõigile lisada ka textfile collector
+    - kuna juba paigaldatud exporteri confi on keeruline muuta, tuleks windows_exporter kas täielikult eemaldada, ja uuesti paigaldada uue collectoriga, või PDQDeploy-ga muuta registriväärtuseid (ma ei tea kas see on võimalik)
+  - luua tuleks scheduled task, mis jooksutab admin õigustega taustal powershell scripti ning väljastab selle "textfile_inputs" kausta. 
+  [Näide PS scriptist on siin](/docs/example_ps_collector.ps1)
+  - näide kogutud andmetest DC2 peal:
+  ![näide kogutud andmetest](/docs/img/firefox_z6dliAdUWw.png)
