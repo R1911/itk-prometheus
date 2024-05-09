@@ -4,11 +4,14 @@ global:
 scrape_configs:
   - job_name: "linux_servers"
     scrape_interval: 1m
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/prometheus.crt
+      insecure_skip_verify: true
+    basic_auth:
+      username: prometheus
+      password: Prometheus
     static_configs:
-      - targets: ["10.10.50.6:9100"]
-        labels:
-          type: "Server"
-          instance: "NAS"
       - targets: ["10.10.50.4:9100"]
         labels:
           type: "Server"
@@ -22,9 +25,15 @@ scrape_configs:
           type: "Server"
           instance: "Prometheus"
 
-
   - job_name: "windows_servers"
     scrape_interval: 1m
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/prometheus.crt
+      insecure_skip_verify: true
+    basic_auth:
+      username: prometheus
+      password: Prometheus
     static_configs:
       - targets: ["10.10.60.3:9182"]
         labels:
@@ -85,6 +94,13 @@ scrape_configs:
 
   - job_name: "switch"
     scrape_interval: 1m
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/prometheus.crt
+      insecure_skip_verify: true
+    basic_auth:
+      username: prometheus
+      password: Prometheus
     static_configs:
       - targets: ["127.0.0.1:9116"]
         labels:
@@ -98,17 +114,47 @@ scrape_configs:
       - target_label: __address__
         replacement: "127.0.0.1:9116"
 
+  - job_name: "truenas"
+    scrape_interval: 1m
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/prometheus.crt
+      insecure_skip_verify: true
+    basic_auth:
+      username: prometheus
+      password: Prometheus
+    static_configs:
+      - targets: ["127.0.0.1:9117"]
+        labels:
+          type: "Server"
+          __param_target: "10.10.60.33"
+          instance: "TrueNAS"
+    metrics_path: "/snmp"
+    params:
+      module: [truenas]
+    relabel_configs:
+      - target_label: __address__
+        replacement: "127.0.0.1:9117"
+
+
   - job_name: "router"
     scrape_interval: 1m
+    scheme: https
+    tls_config:
+      ca_file: /etc/prometheus/prometheus.crt
+      insecure_skip_verify: true
+    basic_auth:
+      username: prometheus
+      password: Prometheus
     static_configs:
-      - targets: ["172.0.0.1:49090"]
+      - targets: ["172.0.0.1:49091"]
         labels:
           type: "Võrguseade"
           __param_target: "10.10.50.1"
           instance: "Router"
     relabel_configs:
       - target_label: __address__
-        replacement: "127.0.0.1:49090"
+        replacement: "127.0.0.1:49091"
 
 alerting:
   alertmanagers:

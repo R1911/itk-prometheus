@@ -2475,7 +2475,7 @@
         "type": "timeseries"
       }
     ],
-    "refresh": "5m",
+    "refresh": "10s",
     "schemaVersion": 39,
     "tags": [],
     "templating": {
@@ -2568,6 +2568,6 @@
     "timezone": "browser",
     "title": "Windowsi Serverid [Detailne]",
     "uid": "IV0hu1m7x",
-    "version": 5,
+    "version": 6,
     "weekStart": ""
   }
