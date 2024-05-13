@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const https = require("https");
+const fs = require("fs");
 require('dotenv').config();
 
 const PORT = 9099;
@@ -75,7 +77,12 @@ app.post("/alert", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+const options = {
+  key: fs.readFileSync('/etc/prometheus/prometheus.key'),
+  cert: fs.readFileSync('/etc/prometheus/prometheus.crt'),
+};
+
+https.createServer(options, app).listen(PORT, () => {
   timestamp = new Date().toLocaleString().replace(",", "");
   console.log(`[${timestamp}] Server running on port ${PORT}`);
 });
