@@ -96,7 +96,9 @@ SystemCallArchitectures=native
 WantedBy=multi-user.target
 ```
 
-```sudo systemctl daemon-reload && sudo systemctl enable prometheus && sudo systemctl restart prometheus && sudo systemctl status prometheus```
+```bash
+sudo systemctl daemon-reload && sudo systemctl enable prometheus && sudo systemctl restart prometheus && sudo systemctl status prometheus
+```
 
 #### 3. **Häirete süsteem Alertmanageriga**
 
@@ -120,17 +122,23 @@ Eelnevalt mainitud [/etc/prometheus/alerts.yml](/etc/prometheus/alerts.yml) fail
 - Basic autentimene ja TLS
   Sarnaselt prometheus.service, lisa ExecStart reale "--web.config.file="/etc/prometheus/config.yml""
 
-  ```sudo systemctl daemon-reload && sudo systemctl enable prometheus-alertmanager && sudo systemctl restart prometheus-alertmanager && sudo systemctl status prometheus-alertmanager```
+  ```bash
+  sudo systemctl daemon-reload && sudo systemctl enable prometheus-alertmanager && sudo systemctl restart prometheus-alertmanager && sudo systemctl status prometheus-alertmanager
+  ```
 
 #### 4. **Alertmanageri vaheliides.js**
 
 Javascriptis vaheliides, mis restruktureerib JSON päringu. Vaheliides toimib Node.js keskkonnas ning kasutab Express.js raamistikku.
 
 - nodejs-i paigaldamine (mõnel OPsüsteemil võib see olla eelpaigaldatud)
-  - `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
-  - `nvm install v20.12.2`
+  - ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    ```
+  - ```bash
+    nvm install v20.12.2
+    ```
 - vaheliidese loomine ning Process Manageriga selle taustal jooksutamine
-  - `cd /srv` (otseselt ei ole vahet kuhu see paigaldada)
+  - ```bashcd /srv` (otseselt ei ole vahet kuhu see paigaldada)
   - `sudo mkdir vaheliides && sudo chown user:user vaheliides`
   - `cd vaheliides`
   - `npm i express request dotenv && npm i -g pm2` (npm-iga paigaldatakse vajalikud paketid - expressjs, request ning dotenv, lisaks ka paigaldatakse globaalselt PM2 protsessihaldur)
@@ -142,17 +150,30 @@ Javascriptis vaheliides, mis restruktureerib JSON päringu. Vaheliides toimib No
   - `pm2 start index.js --name vaheliides` (veendu et oled ikka veel kaustas kuhu tegid oma index.js)
   - `pm2 logs vaheliides` - rakenduse logide nägemiseks, hetkel on index.js loodud nii, et ta genereerib üsna palju debugimise logisid.
 - et script käivitus automaatselt startupi ajal tee: ```pm2 startup```, ning see käsklus, mis näidatakse tuleb sisestada käsureale.
-  - `midagi sellist: `sudo env PATH=$PATH:/home/user/.nvm/versions/node/v20.12.2/bin /home/user/.nvm/versions/node/v20.12.2/lib/node_modules/pm2/bin/pm2 startup systemd -u user --hp /home/user`
+  - `midagi sellist:
+  ```bash
+  sudo env PATH=$PATH:/home/user/.nvm/versions/node/v20.12.2/bin /home/user/.nvm/versions/node/v20.12.2/lib/node_modules/pm2/bin/pm2 startup systemd -u user --hp /home/user
+  ```
 - Seejärel `pm2 save`
 
 #### 5. **[Grafana paigaldamine](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/)**
 
-```sudo apt-get install -y apt-transport-https software-properties-common wget```
-```sudo wget -q -O /usr/share/keyrings/grafana.key https://apt.grafana.com/gpg.key```
-```echo "deb [signed-by=/usr/share/keyrings/grafana.key] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list```
-```sudo apt-get update && sudo apt-get install grafana```
+```bash
+sudo apt-get install -y apt-transport-https software-properties-common wget
+```
+```bash
+sudo wget -q -O /usr/share/keyrings/grafana.key https://apt.grafana.com/gpg.key
+```
+```bash
+echo "deb [signed-by=/usr/share/keyrings/grafana.key] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+```
+```bash
+sudo apt-get update && sudo apt-get install grafana
+```
 
-```sudo systemctl daemon-reload && sudo systemctl enable grafana-server.service && sudo systemctl start grafana-server```
+```bash
+sudo systemctl daemon-reload && sudo systemctl enable grafana-server.service && sudo systemctl start grafana-server
+```
 
 
 ### Lõppseadmete agendid/exporterid
@@ -197,7 +218,9 @@ SendSIGKILL=no
 WantedBy=multi-user.target
 ```
 
-```sudo systemctl daemon-reload && sudo systemctl enable prometheus-node-exporter && sudo systemctl restart prometheus-node-exporter && sudo systemctl status prometheus-node-exporter```
+```bash
+sudo systemctl daemon-reload && sudo systemctl enable prometheus-node-exporter && sudo systemctl restart prometheus-node-exporter && sudo systemctl status prometheus-node-exporter
+```
 
 [For the sake of "Backup", lisasin erinevate serverite .service failid reposse](/etc/exporterite%20confid/)
 
@@ -243,7 +266,10 @@ Mikrotik ruuter - kasutab snmp_exporterist forkitud pythoni põhist RouterOS-le 
 SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal. Exporterist tehakse SNMP ühendus võrguseadme külge ning see võimaldab sealt lugeda parameetreid ning teha need exporteri endpointist Prometheusile endale kättesaadavaks. Idee poolest võivad need exporterid paikneda ka mingi teise serveri peal, mitte keskse monitooringu serveri peal.
 
 - **SNMP EXPORTER**
-  ```sudo apt install prometheus-snmp-exporter```
+
+```bash
+  sudo apt install prometheus-snmp-exporter
+```
 
   - eeldus:
     SNMP seadmes peab olema loodud lugemisõigustega (snmp) kasutaja.
@@ -252,7 +278,7 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
     SNMP exporteriga tuleb kaks rakendust - exporter ise ning "generator", mis loob SNMP seadme MIB-ile vastavad OID-teekonnad. Generatori sisendiks on generator.yml, kus pead ära defineerima autentimiseks vajaliku info ning OID-teekonnad. Planet switchi jaoks kasutasime ainult väga basic OID-sid.
   
     Näide switchile tehtud generator.yml failist:
-    ```bash
+```bash
     modules:
     planet_switch:
       version: 3
@@ -272,7 +298,7 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
       overrides:
         ifDescr:
           type: DisplayString
-    ```
+```
 
     Seejärel saad kasutada käsklust ```prometheus-snmp-generator generate```, mis loob snmp.yml faili.
     
@@ -283,7 +309,9 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
 
   - SNMP confid
 
-    ```sudo systemctl stop prometheus-snmp-exporter```
+```bash
+    sudo systemctl stop prometheus-snmp-exporter
+```
 
     Kuna on kaks seadet mis kasutavad snmp_exporterit, ning üks exporter suudab vastutada ainult ühe seadme eest, on vaja teenust duplikeerida (ilmselt on sellele ka parem lahendus, aga meie lahendus on kõige "straight forward"-im). 
     
@@ -295,16 +323,25 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
     Nagu nendest failidest on näha, kasutavad nad jällegi sama /etc/prometheus/config.yml "--web.config.file"i TLS-i jaoks ning lisaks on mõlemal teenusel defineeritud vastav snmp "--config.file".
     Kuna snmp exporteri default port on 9116, tuleb teisel exporteril see muuta mingi muu pordi peale. 
 
-    ```sudo systemctl daemon-reload && sudo systemctl enable prometheus-snmp-switch-exporter && sudo start prometheus-snmp-switch-exporter```
-    ```sudo systemctl enable prometheus-snmp-truenas-exporter && sudo start prometheus-snmp-truenas-exporter```
+    ```bash
+    sudo systemctl daemon-reload && sudo systemctl enable prometheus-snmp-switch-exporter && sudo start prometheus-snmp-switch-exporter
+    ```
+    ```bash
+    sudo systemctl enable prometheus-snmp-truenas-exporter && sudo start prometheus-snmp-truenas-exporter
+    ```
 
 - **MKTXP**
   - eeldus:
     Ruuteris peab olema loodud lugemisõigustega (snmp) kasutaja.
   
-  - exporteri paigaldamine
-    ```sudo apt install python3 pipx``` (exporter töötab pythoni peal, pipx on veidi parem lahendus kui pip)
-    ```pipx install mktxp```
+  - exporteri paigaldamine (exporter töötab pythoni peal, pipx on veidi parem lahendus kui pip)
+```bash
+    sudo apt install python3 pipx
+```
+
+```bash
+    pipx install mktxp
+```
 
     Kasutades `mktxp edit` saad defineerida ruuteri IP aadressi ning autenitmis parameetrid.
     Seal saad ka ebavajalikud collectorid/seaded välja lülitada.
@@ -372,7 +409,9 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
 
     [prometheus-mktxp-exporter.service](/etc/exporterite%20confid/prometheus-mktxp-exporter.service)
 
-    ```sudo systemctl daemon-reload && sudo systemctl enable prometheus-mktxp-exporter && sudo systemctl start prometheus-mktxp-exporter.service```
+    ```bash
+    sudo systemctl daemon-reload && sudo systemctl enable prometheus-mktxp-exporter && sudo systemctl start prometheus-mktxp-exporter.service
+    ```
 
 #### 4. Teenusepõhised exporterid
 Prometheusil on ka lai valik spetsiifilise teenuse põhiseid exportereid nagu näiteks [proxmox virtual environment exporter (võimaldab näha proxmoxi peal virtualiseeritud masinate infot)](https://github.com/prometheus-pve/prometheus-pve-exporter) või [openvpn exporter](https://github.com/patrickjahns/openvpn_exporter)
@@ -381,14 +420,22 @@ Siin on kasutatud OpenVPN exporterit.
 
 - Paigaldamine
   Binary saab [siit](https://github.com/patrickjahns/openvpn_exporter/releases)
-  ```wget https://github.com/patrickjahns/openvpn_exporter/releases/download/v1.1.2/openvpn_exporter-linux-amd64```
-  ```mv openvpn_exporter-linux-amd64 /usr/local/bin/prometheus-openvpn-exporter```
-  ```sudo chmod +x /usr/local/bin/prometheus-openvpn-exporter```
+```bash
+  wget https://github.com/patrickjahns/openvpn_exporter/releases/download/v1.1.2/openvpn_exporter-linux-amd64
+```
+```bash
+  mv openvpn_exporter-linux-amd64 /usr/local/bin/prometheus-openvpn-exporter
+```
+```bash
+  sudo chmod +x /usr/local/bin/prometheus-openvpn-exporter
+```
 
   Teenuse ExecStart-is tuleb defineerida kus asub OpenVPN-i status file. Kahjuks OpenVPN exporter ei võimalda TLS encryptionit
   [prometheus-openvpn-exporter.service](/etc/exporterite%20confid/prometheus-openvpn-exporter.service)
 
-  ```sudo systemctl daemon-reload && sudo systemctl enable prometheus-openvpn-exporter && sudo systemctl start prometheus-openvpn-exporter```
+  ```bash
+  sudo systemctl daemon-reload && sudo systemctl enable prometheus-openvpn-exporter && sudo systemctl start prometheus-openvpn-exporter
+  ```
 
 ### Grafana lisaseadistused ning töölauad ja paneelid.
 
