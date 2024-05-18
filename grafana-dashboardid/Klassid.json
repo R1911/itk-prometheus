@@ -1,1086 +1,1055 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": 5,
-    "links": [],
-    "liveNow": true,
-    "panels": [
+  "annotations": {
+    "list": [
       {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 11,
-        "panels": [],
-        "title": "Row title",
-        "type": "row"
-      },
-      {
+        "builtIn": 1,
         "datasource": {
-          "type": "prometheus",
-          "uid": "cdks89qgtu4n4a"
+          "type": "grafana",
+          "uid": "-- Grafana --"
         },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 0.75
-                }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC01.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC01"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC02.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC02"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC03.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC03"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC04.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC04"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC05.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC05"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC06.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC06"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC07.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC07"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC08.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC08"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC09.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC09"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC10.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC10"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC11.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC11"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC12.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC12"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC13.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC13"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC14.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC14"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A302-PC15.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC15"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 1
-        },
-        "id": 8,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": true,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "cdks89qgtu4n4a"
-            },
-            "editorMode": "code",
-            "expr": "1 - (windows_logical_disk_free_bytes{job=\"302_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"302_workstations\", volume=\"C:\"})",
-            "instant": false,
-            "legendFormat": "{{instance}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "A302 C:/",
-        "transparent": true,
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "cdks89qgtu4n4a"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 0.75
-                }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC01.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC01"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC02.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC02"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC03.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC03"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC04.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC04"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC05.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC05"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC06.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC06"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC07.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC07"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC08.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC08"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC09.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC09"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC10.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC10"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC11.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC11"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC12.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC12"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC14.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC14"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A303-PC15.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC15"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byRegexp",
-                "options": "/PC13/"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC13"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 1
-        },
-        "id": 9,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": true,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "cdks89qgtu4n4a"
-            },
-            "editorMode": "code",
-            "expr": "1 - (windows_logical_disk_free_bytes{job=\"303_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"303_workstations\", volume=\"C:\"})",
-            "instant": false,
-            "legendFormat": "{{instance}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "A303 C:/",
-        "transparent": true,
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "cdks89qgtu4n4a"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 0.75
-                }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC01.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC01"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC02.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC02"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC03.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC03"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC04.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC04"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC05.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC05"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC06.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC06"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC07.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC07"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC08.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC08"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC09.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC09"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC10.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC10"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC11.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC11"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC12.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC12"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC13.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC13"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC14.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC14"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A304-PC15.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC15"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 9
-        },
-        "id": 7,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": true,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "cdks89qgtu4n4a"
-            },
-            "editorMode": "code",
-            "expr": "1 - (windows_logical_disk_free_bytes{job=\"304_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"304_workstations\", volume=\"C:\"})",
-            "instant": false,
-            "legendFormat": "{{instance}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "A304 C:/",
-        "transparent": true,
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "cdks89qgtu4n4a"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 0.75
-                }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC01.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC01"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC02.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC02"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC03.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC03"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC04.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC04"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC05.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC05"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC06.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC06"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC07.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC07"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC08.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC08"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC09.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC09"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC10.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC10"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC11.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC11"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC12.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC12"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC13.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC13"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC14.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC14"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "A308-PC15.it.hariduskeskus.ee:9182"
-              },
-              "properties": [
-                {
-                  "id": "displayName",
-                  "value": "PC15"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 9
-        },
-        "id": 6,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": true,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "cdks89qgtu4n4a"
-            },
-            "editorMode": "code",
-            "expr": "1 - (windows_logical_disk_free_bytes{job=\"308_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"308_workstations\", volume=\"C:\"})",
-            "instant": false,
-            "legendFormat": "{{instance}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "A308 C:/",
-        "transparent": true,
-        "type": "stat"
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "refresh": "30m",
-    "schemaVersion": 39,
-    "tags": [
-      "Windows",
-      "Klass",
-      "302",
-      "303",
-      "304",
-      "308"
-    ],
-    "templating": {
-      "list": [
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 7,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "panels": [],
+      "title": "C: drive usage",
+      "type": "row"
+    },
+    {
+      "datasource": "${datasource}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.75
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC01.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC01"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC02.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC02"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC03.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC03"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC04.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC04"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC05.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC05"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC06.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC06"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC07.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC07"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC08.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC08"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC09.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC09"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC10.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC11.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC12.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC12"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC13.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC13"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC14.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC14"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A302-PC15.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC15"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
         {
-          "current": {
-            "selected": false,
-            "text": "A308-PC01",
-            "value": "A308-PC01"
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "cdks89qgtu4n4a"
-          },
-          "definition": "label_values(windows_logical_disk_free_bytes{job=\"308_workstations\"},instance)",
-          "hide": 2,
-          "includeAll": true,
-          "multi": false,
-          "name": "pcnames",
-          "options": [],
-          "query": {
-            "qryType": 1,
-            "query": "label_values(windows_logical_disk_free_bytes{job=\"308_workstations\"},instance)",
-            "refId": "PrometheusVariableQueryEditor-VariableQuery"
-          },
-          "refresh": 1,
-          "regex": "/^(.*?PC\\d+)/",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
+          "datasource": "${datasource}",
+          "editorMode": "code",
+          "expr": "1 - (windows_logical_disk_free_bytes{job=\"302_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"302_workstations\", volume=\"C:\"})",
+          "instant": false,
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
         }
-      ]
+      ],
+      "title": "A302 C:/",
+      "transparent": true,
+      "type": "stat"
     },
-    "time": {
-      "from": "now-7d",
-      "to": "now"
+    {
+      "datasource": "${datasource}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.75
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC01.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC01"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC02.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC02"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC03.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC03"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC04.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC04"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC05.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC05"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC06.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC06"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC07.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC07"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC08.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC08"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC09.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC09"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC10.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC11.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC12.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC12"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC14.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC14"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A303-PC15.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC15"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/PC13/"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC13"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": "${datasource}",
+          "editorMode": "code",
+          "expr": "1 - (windows_logical_disk_free_bytes{job=\"303_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"303_workstations\", volume=\"C:\"})",
+          "instant": false,
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "A303 C:/",
+      "transparent": true,
+      "type": "stat"
     },
-    "timepicker": {},
-    "timezone": "browser",
-    "title": "Klassid",
-    "uid": "bdksgg65lz5kwd",
-    "version": 9,
-    "weekStart": ""
-  }
+    {
+      "datasource": "${datasource}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.75
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC01.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC01"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC02.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC02"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC03.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC03"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC04.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC04"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC05.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC05"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC06.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC06"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC07.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC07"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC08.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC08"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC09.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC09"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC10.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC11.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC12.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC12"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC13.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC13"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC14.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC14"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A304-PC15.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC15"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": "${datasource}",
+          "editorMode": "code",
+          "expr": "1 - (windows_logical_disk_free_bytes{job=\"304_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"304_workstations\", volume=\"C:\"})",
+          "instant": false,
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "A304 C:/",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": "${datasource}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.75
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC01.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC01"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC02.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC02"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC03.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC03"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC04.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC04"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC05.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC05"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC06.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC06"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC07.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC07"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC08.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC08"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC09.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC09"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC10.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC11.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC12.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC12"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC13.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC13"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC14.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC14"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "A308-PC15.it.hariduskeskus.ee:9182"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "PC15"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": "${datasource}",
+          "editorMode": "code",
+          "expr": "1 - (windows_logical_disk_free_bytes{job=\"308_workstations\", volume=\"C:\"}/windows_logical_disk_size_bytes{job=\"308_workstations\", volume=\"C:\"})",
+          "instant": false,
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "A308 C:/",
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "30m",
+  "schemaVersion": 39,
+  "tags": [
+    "Windows",
+    "Klass",
+    "302",
+    "303",
+    "304",
+    "308"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 2,
+        "includeAll": true,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timeRangeUpdatedDuringEditOrView": false,
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Klasside kettaruumi kasutus",
+  "uid": "bdksgg65lz5kwd",
+  "version": 4,
+  "weekStart": ""
+}

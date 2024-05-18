@@ -1,0 +1,9 @@
+[Unit]
+Description=SNMP Exporter
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-snmp-exporter --web.config.file="/etc/prometheus/config.yml" --config.file="/etc/prometheus/snmp-switch.yml"
+[Install]
+WantedBy=multi-user.target

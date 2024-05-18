@@ -6,7 +6,7 @@ scrape_configs:
     scrape_interval: 1m
     scheme: https
     tls_config:
-      ca_file: /etc/prometheus/prometheus.crt
+      ca_file: /etc/prometheus/ca.crt
       insecure_skip_verify: true
     basic_auth:
       username: prometheus
@@ -20,16 +20,20 @@ scrape_configs:
         labels:
           type: "Server"
           instance: "Proxmox"
-      - targets: ["10.10.50.204:9100"]
+      - targets: ["10.10.50.222:9100"]
         labels:
           type: "Server"
           instance: "Prometheus"
+      - targets: ["10.10.60.4:9100"]
+        labels:
+          type: "Server"
+          instance: "VPN"
 
   - job_name: "windows_servers"
     scrape_interval: 1m
     scheme: https
     tls_config:
-      ca_file: /etc/prometheus/prometheus.crt
+      ca_file: /etc/prometheus/ca.crt
       insecure_skip_verify: true
     basic_auth:
       username: prometheus
@@ -96,7 +100,7 @@ scrape_configs:
     scrape_interval: 1m
     scheme: https
     tls_config:
-      ca_file: /etc/prometheus/prometheus.crt
+      ca_file: /etc/prometheus/ca.crt
       insecure_skip_verify: true
     basic_auth:
       username: prometheus
@@ -118,7 +122,7 @@ scrape_configs:
     scrape_interval: 1m
     scheme: https
     tls_config:
-      ca_file: /etc/prometheus/prometheus.crt
+      ca_file: /etc/prometheus/ca.crt
       insecure_skip_verify: true
     basic_auth:
       username: prometheus
@@ -127,7 +131,7 @@ scrape_configs:
       - targets: ["127.0.0.1:9117"]
         labels:
           type: "Server"
-          __param_target: "10.10.60.33"
+          __param_target: "10.10.50.6"
           instance: "TrueNAS"
     metrics_path: "/snmp"
     params:
@@ -136,12 +140,11 @@ scrape_configs:
       - target_label: __address__
         replacement: "127.0.0.1:9117"
 
-
   - job_name: "router"
     scrape_interval: 1m
     scheme: https
     tls_config:
-      ca_file: /etc/prometheus/prometheus.crt
+      ca_file: /etc/prometheus/ca.crt
       insecure_skip_verify: true
     basic_auth:
       username: prometheus
@@ -156,11 +159,34 @@ scrape_configs:
       - target_label: __address__
         replacement: "127.0.0.1:49091"
 
+  - job_name: "openvpn"
+    scrape_interval: 1m
+#    scheme: https
+#    tls_config:
+#      ca_file: /etc/prometheus/prometheus.crt
+#      insecure_skip_verify: true
+#    basic_auth:
+#      username: prometheus
+#      password: Prometheus
+    static_configs:
+      - targets: ["10.10.60.4:50011"]
+        labels:
+          type: "VPN"
+          instance: "VPN"
+
 alerting:
   alertmanagers:
     - static_configs:
-        - targets:
-            - "localhost:9093"
+        - targets: ["monitooring.it.hariduskeskus.ee:9093"]
+      scheme: https
+      tls_config:
+        insecure_skip_verify: true
+      basic_auth:
+        username: prometheus
+        password: Prometheus
+#          tls_config:
+#            cert_file: /etc/prometheus/prometheus.crt
+#            key_file: /etc/prometheus/prometheus.key
 
 rule_files:
   - "alerts.yml"

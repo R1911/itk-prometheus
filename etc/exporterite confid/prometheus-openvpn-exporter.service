@@ -1,0 +1,9 @@
+[Unit]
+Description=OpenVPN Exporter Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/openvpn-exporter --status-file /var/log/openvpn/status.log --web.address 0.0.0.0:50011
+[Install]
+WantedBy=multi-user.target

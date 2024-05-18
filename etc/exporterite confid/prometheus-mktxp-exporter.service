@@ -1,0 +1,9 @@
+[Unit]
+Description=MKTXP Exporter
+
+[Service]
+User=user
+ExecStart=/home/user/.local/bin/mktxp export
+
+[Install]
+WantedBy=default.target

@@ -12,4 +12,4 @@ http_server_config:
     X-XSS-Protection: "1; mode=block"
 
 basic_auth_users:
-  prometheus: hashitudparool.peabolemasiinreal
+  prometheus: saltedparool.peabolemasiinreal
