@@ -139,18 +139,16 @@ Javascriptis vaheliides, mis restruktureerib JSON päringu. Vaheliides toimib No
     nvm install v20.12.2
     ```
 - vaheliidese loomine ning Process Manageriga selle taustal jooksutamine
-  - ```bashcd /srv` (otseselt ei ole vahet kuhu see paigaldada)
+  - `cd /srv` (otseselt ei ole vahet kuhu see vaheliides paigaldada, iseenesest võib ta kuhugi /var/www/ vms kausta ka panna)
   - `sudo mkdir vaheliides && sudo chown user:user vaheliides`
   - `cd vaheliides`
   - `npm i express request dotenv && npm i -g pm2` (npm-iga paigaldatakse vajalikud paketid - expressjs, request ning dotenv, lisaks ka paigaldatakse globaalselt PM2 protsessihaldur)
-  - `nano index.js`
   - [/srv/vaheliides/index.js](/srv/vaheliides/index.js)
-  - `nano .env`
-  - .env faili kirjuta "WEBHOOK_URL=webhooki_URL_mille_saad_Discordist"
+  - Loo samasse directory ".env" fail, mille sisu on "WEBHOOK_URL=webhooki_URL_mille_saad_Discordist"
 - vaheliidese rakenduse serveri taustal käitamine PM2-ga:
-  - `pm2 start index.js --name vaheliides` (veendu et oled ikka veel kaustas kuhu tegid oma index.js)
+  - `pm2 start index.js --name vaheliides` (veendu et oled ikka veel kaustas kus asub index.js)
   - `pm2 logs vaheliides` - rakenduse logide nägemiseks, hetkel on index.js loodud nii, et ta genereerib üsna palju debugimise logisid.
-- et script käivitus automaatselt startupi ajal tee: ```pm2 startup```, ning see käsklus, mis näidatakse tuleb sisestada käsureale.
+- et script käivitus automaatselt OS-i startupi ajal tee: ```pm2 startup```, ning see käsklus, mis näidatakse tuleb sisestada käsureale.
   - `midagi sellist:
   ```bash
   sudo env PATH=$PATH:/home/user/.nvm/versions/node/v20.12.2/bin /home/user/.nvm/versions/node/v20.12.2/lib/node_modules/pm2/bin/pm2 startup systemd -u user --hp /home/user
