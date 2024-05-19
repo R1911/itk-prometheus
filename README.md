@@ -239,14 +239,14 @@ Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid
 
     config.yml-is on defineeritud meile sobilikud collectorid, ning web-config.yml-is on defineeritud TLS ja basic autentimine.
 
-  - **paigaldamine**
-    Windows Exporteri .msi installeri saab [nende GitHubist](https://github.com/prometheus-community/windows_exporter/releases)
+ - paigaldamine**
+   Windows Exporteri .msi installeri saab [nende GitHubist](https://github.com/prometheus-community/windows_exporter/releases)
 
-    Paigaldamine käib msiexec utiliidiga käsurealt (NB: see käsk ei tööta powershelliga, CMD-ga töötab):
+   Paigaldamine käib msiexec utiliidiga käsurealt (NB: see käsk ei tööta powershelliga, CMD-ga töötab):
 
-    ```bash
-    msiexec /i windows_exporter-0.25.1-amd64.msi EXTRA_FLAGS="--web.config.file=""C:\Program Files\windows_exporter\web-config.yml"" --config.file=""C:\Program Files\windows_exporter\config.yml""" ADD_FIREWALL_EXCEPTION="yes"
-    ```
+   ```bash
+   msiexec /i windows_exporter-0.25.1-amd64.msi EXTRA_FLAGS="--web.config.file=""C:\Program Files\windows_exporter\web-config.yml"" --config.file=""C:\Program Files\windows_exporter\config.yml""" ADD_FIREWALL_EXCEPTION="yes"
+   ```
 
 - ##### **2.2 töömasinad (massipaigaldus)**
 
