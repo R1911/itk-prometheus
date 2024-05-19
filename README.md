@@ -342,12 +342,13 @@ sudo apt install python3 pipx
 ```
 
 ```bash
-    pipx install mktxp
+pipx install mktxp
 ```
 
   Kasutades `mktxp edit` saad defineerida ruuteri IP aadressi ning autenitmis parameetrid.
   Seal saad ka ebavajalikud collectorid/seaded välja lülitada.
     ```bash
+    
     [Router]
       # for specific configuration on the router level, change here the defaults values from below
       hostname = 10.10.50.1
@@ -406,7 +407,8 @@ sudo apt install python3 pipx
       check_for_updates = False       # check for available ROS updates
     ```
 
-  Järgmisena tuleks see muuta serveri teenuseks. Kahjuks MKTXP ei võimalda TLS encryptionit
+  Järgmisena tuleks see muuta teenuseks. Kahjuks MKTXP ei võimalda TLS encryptionit
+  
   `sudo nano /etc/systemd/system/prometheus-mktxp-exporter.service` 
 
   [prometheus-mktxp-exporter.service](/etc/exporterite%20confid/prometheus-mktxp-exporter.service)
