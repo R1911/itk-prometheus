@@ -229,7 +229,7 @@ sudo systemctl daemon-reload && sudo systemctl enable prometheus-node-exporter &
 
 Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid meie lahenduses monitoorime töömasinatel ainult kettakasutust - ehk kõik muu on välja lülitatud.
 
-- ##### **2.1 Serverid**
+##### **2.1 Serverid**
 
   - **eeldused**
     
@@ -239,7 +239,8 @@ Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid
 
     config.yml-is on defineeritud meile sobilikud collectorid, ning web-config.yml-is on defineeritud TLS ja basic autentimine.
 
- - paigaldamine**
+ - **paigaldamine**
+   
    Windows Exporteri .msi installeri saab [nende GitHubist](https://github.com/prometheus-community/windows_exporter/releases)
 
    Paigaldamine käib msiexec utiliidiga käsurealt (NB: see käsk ei tööta powershelliga, CMD-ga töötab):
@@ -248,7 +249,7 @@ Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid
    msiexec /i windows_exporter-0.25.1-amd64.msi EXTRA_FLAGS="--web.config.file=""C:\Program Files\windows_exporter\web-config.yml"" --config.file=""C:\Program Files\windows_exporter\config.yml""" ADD_FIREWALL_EXCEPTION="yes"
    ```
 
-- ##### **2.2 töömasinad (massipaigaldus)**
+##### **2.2 töömasinad (massipaigaldus)**
 
     Idee poolest võiks ka töömasinatel kasutada samasugust confipõhist autentimise + TLS lisadega paigaldust. Hetke lahendusel on töömasinad tavalise HTTP lahendusega.
 
