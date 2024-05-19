@@ -232,16 +232,17 @@ Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid
 - **Serverid**
 
   - **eeldused**
+    
     Et lihtsustada potensiaalseid tulevasi muudatusi, tuleks luua config fail, mis defineerib ära, mis metricuid monitooritakse jne. Kui paigaldada windows_exporter ilma config faili defineerimate, kasutab ta default seadeid ning tulevikus tuleb muudatusi teha Registry Editorist (Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\windows_exporter).
 
-    Loo C:/Program Files/windows_exporter kaust. Sinna kausta on vaja panna server.crt ja server.key TLS-i jaoks (ma ei hakka uuesti kirjeldama kuidas seda teha), ning [config.yml](/C/Program%20Files/windows_exporter/config.yml) ja [web-config.yml](/C/Program%20Files/windows_exporter/web-config.yml)
+    Loo `C:/Program Files/windows_exporter` kaust. Sinna kausta on vaja panna server.crt ja server.key TLS-i jaoks (ma ei hakka uuesti kirjeldama kuidas seda teha), ning [config.yml](/C/Program%20Files/windows_exporter/config.yml) ja [web-config.yml](/C/Program%20Files/windows_exporter/web-config.yml)
 
     config.yml-is on defineeritud meile sobilikud collectorid, ning web-config.yml-is on defineeritud TLS ja basic autentimine.
 
   - **paigaldamine**
     Windows Exporteri .msi installeri saab [nende GitHubist](https://github.com/prometheus-community/windows_exporter/releases)
 
-    Paigaldamine käib msiexec utiliidiga käsurealt:
+    Paigaldamine käib msiexec utiliidiga käsurealt (NB: see käsk ei tööta powershelliga, CMD-ga töötab):
 
     ```bash
     msiexec /i windows_exporter-0.25.1-amd64.msi EXTRA_FLAGS="--web.config.file=""C:\Program Files\windows_exporter\web-config.yml"" --config.file=""C:\Program Files\windows_exporter\config.yml""" ADD_FIREWALL_EXCEPTION="yes"
@@ -249,14 +250,14 @@ Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid
 
 - **töömasinad (massipaigaldus)**
 
-Idee poolest võiks ka töömasinatel kasutada samasugust confipõhist autentimise + TLS lisadega paigaldust. Hetke lahendusel on töömasinad tavalise HTTP lahendusega.
+    Idee poolest võiks ka töömasinatel kasutada samasugust confipõhist autentimise + TLS lisadega paigaldust. Hetke lahendusel on töömasinad tavalise HTTP lahendusega.
 
-PDQDeploy-ga on tehtud package, mis kasutab .msi installimisel järgnevaid parameetreid `ENABLED_COLLECTORS="logical_disk" ADD_FIREWALL_EXCEPTION="yes"`
+    PDQDeploy-ga on tehtud package, mis kasutab .msi installimisel järgnevaid parameetreid `ENABLED_COLLECTORS="logical_disk" ADD_FIREWALL_EXCEPTION="yes"`
 
-TLS-i ning authi jaoks oleks enne massipaigaldust luua esmalt samad eeldused, mis serverite puhul, ning seejärel teha windows_exporteri massipaigaldus. Teoorias on võimalik exporteritele anda konfig failid, kuskilt failiserverist või URL-ist: --config.file="https://example.com/config.yml", võimalik, et sama saab teha ka --web.config.file-iga, kuid dokumentatsioonis puudus selle kohta teave.
+    TLS-i ning authi jaoks oleks enne massipaigaldust luua esmalt samad eeldused, mis serverite puhul, ning seejärel teha windows_exporteri massipaigaldus. Teoorias on võimalik exporteritele anda konfig failid, kuskilt failiserverist või URL-ist: --config.file="https://example.com/config.yml", võimalik, et sama saab teha ka --web.config.file-iga,      kuid dokumentatsioonis puudus selle kohta teave.
 
-Arenguvõimalustes välja toodud profiilidepõhise kettakasutuse monitoorimiseks tuleks ENABLED_COLLECTORS hulka lisada ka "textfile" ehk parameetrid peaksid olema:
-`ENABLED_COLLECTORS="logical_disk,textfile" TEXTFILE_DIRS="C:\Program Files\windows_exporter\textfile_inputs" ADD_FIREWALL_EXCEPTION="yes"`
+    Arenguvõimalustes välja toodud profiilidepõhise kettakasutuse monitoorimiseks tuleks ENABLED_COLLECTORS hulka lisada ka "textfile" ehk parameetrid peaksid olema:
+    `ENABLED_COLLECTORS="logical_disk,textfile" TEXTFILE_DIRS="C:\Program Files\windows_exporter\textfile_inputs" ADD_FIREWALL_EXCEPTION="yes"`
 
 #### 3. Võrguseadmed - [snmp_exporter](https://github.com/prometheus/snmp_exporter) ja [mktxp](https://github.com/akpw/mktxp)
 
