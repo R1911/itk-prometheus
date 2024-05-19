@@ -34,7 +34,7 @@ See võimaldas hoida põhikonfiguratsiooni puhtama ning loetavamana.
 Faili lõpus on defineeritud häire reeglite fail - [/etc/prometheus/alerts.yml](/etc/prometheus/alerts.yml).
 Jällegi, võimalik on need reeglid defineerida kõik ilma eraldiseisva failita, kuid loetavuse kohapealt muutub üks pikk ning segane konfifail väga kehvasti hoomatavaks.
 
-- Basic autentimine + TLS
+##### 2.1 Basic autentimine + TLS
 
 Selle võimaldamiseks tuleb luua webconfig fail. Et igalpool oleks asi ühtne siis eeldame, et teeme selle faili asukohta [/etc/prometheus/config.yml](/etc/prometheus/config.yml)
 
