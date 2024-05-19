@@ -276,6 +276,7 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
     SNMP seadmes peab olema loodud lugemisõigustega (snmp) kasutaja.
 
   - SNMP faili genereerimine
+    
     SNMP exporteriga tuleb kaks rakendust - exporter ise ning "generator", mis loob SNMP seadme MIB-ile vastavad OID-teekonnad. Generatori sisendiks on generator.yml, kus pead ära defineerima autentimiseks vajaliku info ning OID-teekonnad. Planet switchi jaoks kasutasime ainult väga basic OID-sid.
   
     Näide switchile tehtud generator.yml failist:
@@ -301,35 +302,35 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
           type: DisplayString
 ```
 
-    Seejärel saad kasutada käsklust ```prometheus-snmp-generator generate```, mis loob snmp.yml faili.
+  Seejärel saad kasutada käsklust ```prometheus-snmp-generator generate```, mis loob snmp.yml faili.
     
-    **Backupi mõttes on genereeritud snmp failid nii switchile kui truenas-ile lisatud siia reposse, ehk neid pole otseselt vaja uuesti genereerida, kuid see oleks vajalik uute snmp põhiste seadmete mon. süsteemi lisamisel**
-    [/etc/prometheus/snmp-switch.yml](/etc/prometheus/snmp-switch.yml)
-    [/etc/prometheus/snmp-truenas.yml](/etc/prometheus/snmp-truenas.yml)
-    *note: failide lõpus on kasutajanimi ning parool valed, ma ei hakka neid siin avalikult jagama, aga need tuleks õigeks vahetada*
+  **Backupi mõttes on genereeritud snmp failid nii switchile kui truenas-ile lisatud siia reposse, ehk neid pole otseselt vaja uuesti genereerida, kuid see oleks vajalik uute snmp põhiste seadmete mon. süsteemi lisamisel**
+  [/etc/prometheus/snmp-switch.yml](/etc/prometheus/snmp-switch.yml)
+  [/etc/prometheus/snmp-truenas.yml](/etc/prometheus/snmp-truenas.yml)
+  *note: failide lõpus on kasutajanimi ning parool valed, ma ei hakka neid siin avalikult jagama, aga need tuleks õigeks vahetada*
 
   - SNMP confid
 
 ```bash
-    sudo systemctl stop prometheus-snmp-exporter
+sudo systemctl stop prometheus-snmp-exporter
 ```
 
-    Kuna on kaks seadet mis kasutavad snmp_exporterit, ning üks exporter suudab vastutada ainult ühe seadme eest, on vaja teenust duplikeerida (ilmselt on sellele ka parem lahendus, aga meie lahendus on kõige "straight forward"-im). 
+  Kuna on kaks seadet mis kasutavad snmp_exporterit, ning üks exporter suudab vastutada ainult ühe seadme eest, on vaja teenust duplikeerida (ilmselt on sellele ka parem lahendus, aga meie lahendus on kõige "straight forward"-im). 
     
-    Leia kus snmp-exporteri .service fail asub (tõenäoliselt /etc/systemd/system/prometheus-snmp-exporter.service või /lib/systemd/system/prometheus-snmp-exporter.service) ning tee sellest üks koopia samasse asukohta (```sudo cp```)
+  Leia kus snmp-exporteri .service fail asub (tõenäoliselt /etc/systemd/system/prometheus-snmp-exporter.service või /lib/systemd/system/prometheus-snmp-exporter.service) ning tee sellest üks koopia samasse asukohta (```sudo cp```)
 
-    Selguse mõttes võiks muuta mõlema service-i nimed ära, vastavalt: 
-    "[prometheus-snmp-switch-exporter](/etc/exporterite%20confid/prometheus-snmp-switch-exporter.service)" ja "[prometheus-snmp-truenas-exporter](/etc/exporterite%20confid/prometheus-snmp-truenas-exporter.service)" vms
+  Selguse mõttes võiks muuta mõlema service-i nimed ära, vastavalt: 
+  "[prometheus-snmp-switch-exporter](/etc/exporterite%20confid/prometheus-snmp-switch-exporter.service)" ja "[prometheus-snmp-truenas-exporter](/etc/exporterite%20confid/prometheus-snmp-truenas-exporter.service)" vms
 
-    Nagu nendest failidest on näha, kasutavad nad jällegi sama /etc/prometheus/config.yml "--web.config.file"i TLS-i jaoks ning lisaks on mõlemal teenusel defineeritud vastav snmp "--config.file".
-    Kuna snmp exporteri default port on 9116, tuleb teisel exporteril see muuta mingi muu pordi peale. 
+  Nagu nendest failidest on näha, kasutavad nad jällegi sama /etc/prometheus/config.yml "--web.config.file"i TLS-i jaoks ning lisaks on mõlemal teenusel defineeritud vastav snmp "--config.file".
+  Kuna snmp exporteri default port on 9116, tuleb teisel exporteril see muuta mingi muu pordi peale. 
 
-    ```bash
-    sudo systemctl daemon-reload && sudo systemctl enable prometheus-snmp-switch-exporter && sudo start prometheus-snmp-switch-exporter
-    ```
-    ```bash
-    sudo systemctl enable prometheus-snmp-truenas-exporter && sudo start prometheus-snmp-truenas-exporter
-    ```
+  ```bash
+  sudo systemctl daemon-reload && sudo systemctl enable prometheus-snmp-switch-exporter && sudo start prometheus-snmp-switch-exporter
+  ```
+  ```bash
+  sudo systemctl enable prometheus-snmp-truenas-exporter && sudo start prometheus-snmp-truenas-exporter
+  ```
 
 - **MKTXP**
   - eeldus:
@@ -337,15 +338,15 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
   
   - exporteri paigaldamine (exporter töötab pythoni peal, pipx on veidi parem lahendus kui pip)
 ```bash
-    sudo apt install python3 pipx
+sudo apt install python3 pipx
 ```
 
 ```bash
     pipx install mktxp
 ```
 
-    Kasutades `mktxp edit` saad defineerida ruuteri IP aadressi ning autenitmis parameetrid.
-    Seal saad ka ebavajalikud collectorid/seaded välja lülitada.
+  Kasutades `mktxp edit` saad defineerida ruuteri IP aadressi ning autenitmis parameetrid.
+  Seal saad ka ebavajalikud collectorid/seaded välja lülitada.
     ```bash
     [Router]
       # for specific configuration on the router level, change here the defaults values from below
@@ -405,14 +406,14 @@ SNMP exporterite tööpõhimõte on selline, et nad töötavad otse serveri peal
       check_for_updates = False       # check for available ROS updates
     ```
 
-    Järgmisena tuleks see muuta serveri teenuseks. Kahjuks MKTXP ei võimalda TLS encryptionit
-    `sudo nano /etc/systemd/system/prometheus-mktxp-exporter.service` 
+  Järgmisena tuleks see muuta serveri teenuseks. Kahjuks MKTXP ei võimalda TLS encryptionit
+  `sudo nano /etc/systemd/system/prometheus-mktxp-exporter.service` 
 
-    [prometheus-mktxp-exporter.service](/etc/exporterite%20confid/prometheus-mktxp-exporter.service)
+  [prometheus-mktxp-exporter.service](/etc/exporterite%20confid/prometheus-mktxp-exporter.service)
 
-    ```bash
+  ```bash
     sudo systemctl daemon-reload && sudo systemctl enable prometheus-mktxp-exporter && sudo systemctl start prometheus-mktxp-exporter.service
-    ```
+  ```
 
 #### 4. Teenusepõhised exporterid
 Prometheusil on ka lai valik spetsiifilise teenuse põhiseid exportereid nagu näiteks [proxmox virtual environment exporter (võimaldab näha proxmoxi peal virtualiseeritud masinate infot)](https://github.com/prometheus-pve/prometheus-pve-exporter) või [openvpn exporter](https://github.com/patrickjahns/openvpn_exporter)
