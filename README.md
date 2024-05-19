@@ -255,7 +255,7 @@ Paigaldus protsess on suures pildis sama nii serveritel kui töömasinatel, kuid
 
   PDQDeploy-ga on tehtud package, mis kasutab .msi installimisel järgnevaid parameetreid `ENABLED_COLLECTORS="logical_disk" ADD_FIREWALL_EXCEPTION="yes"`
 
-  TLS-i ning authi jaoks oleks enne massipaigaldust luua esmalt samad eeldused, mis serverite puhul, ning seejärel teha windows_exporteri massipaigaldus. Teoorias on võimalik exporteritele anda konfig failid, kuskilt failiserverist või URL-ist: --config.file="https://example.com/config.yml", võimalik, et sama saab teha ka --web.config.file-iga,      kuid dokumentatsioonis puudus selle kohta teave.
+  TLS-i ning authi jaoks oleks enne massipaigaldust luua esmalt samad eeldused, mis serverite puhul, ning seejärel teha windows_exporteri massipaigaldus. Et vältida igale masinale eraldi confi tegemist, on teoorias on võimalik exporteritele anda konfig failid kuskilt failiserverist või URL-ist: --config.file="https://example.com/config.yml", võimalik, et sama saab teha ka --web.config.file-iga, kuid dokumentatsioonis puudus selle kohta täpsem teave ning see vajaks rohkem testimist.
 
   Arenguvõimalustes välja toodud profiilidepõhise kettakasutuse monitoorimiseks tuleks ENABLED_COLLECTORS hulka lisada ka "textfile" ehk parameetrid peaksid olema:
   `ENABLED_COLLECTORS="logical_disk,textfile" TEXTFILE_DIRS="C:\Program Files\windows_exporter\textfile_inputs" ADD_FIREWALL_EXCEPTION="yes"`
