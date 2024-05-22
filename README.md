@@ -3,7 +3,7 @@
 ## Alustuseks
 
 Monitooringusüsteem põhineb vabavaralisel [Prometheus](https://github.com/prometheus/prometheus) tarkvaral. Andmete kogumine toimub klientseadmetest Prometheusile läbi erinevate agentide, nagu [node_exporter](https://github.com/prometheus/node_exporter) ja [windows_exporter](https://github.com/prometheus-community/windows_exporter/tree/master) jt.
-Andmete visualiseerimiseks on kasutatud [Grafana OSS-i]([htt](https://grafana.com/grafana/download?edition=oss), häirete edastamine toimub läbi webhook-i Discordi.
+Andmete visualiseerimiseks on kasutatud [Grafana OSS-i](https://grafana.com/grafana/download?edition=oss), häirete edastamine toimub läbi webhook-i Discordi.
 
 ## Paigaldus
 
